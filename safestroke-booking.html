@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/safestroke-design-system.css">
     
     <!-- Meta Pixel Code -->
     <script>
@@ -35,157 +36,17 @@
     src="https://www.facebook.com/tr?id=642654784918679&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
-    <style>
-        body { font-family: 'Outfit', sans-serif; color: #00253D; }
-        .dark-section { 
-            background-color: #00253D; 
-            color: white;
-            background-image: radial-gradient(circle at top left, rgba(34, 132, 184, 0.1) 0%, transparent 30%);
-        }
-        .brand-blue { color: #2284B8; }
-        .brand-blue-bg { background-color: #2284B8; }
-        .nav-link { transition: color 0.3s; position: relative; }
-        .nav-link.active { font-weight: 700; color: #2284B8; }
-        .nav-link:not(.active):hover { color: #2284B8; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #2284B8;
-            transition: width 0.3s ease-in-out;
-        }
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
-        .step-indicator {
-            transition: all 0.3s ease-in-out;
-        }
-        /* Consistent transitions and animations */
-        button, a, input, .step-card, [class*="hover:"] {
-            transition: all 0.3s ease;
-        }
-        button:active {
-            transform: scale(0.98);
-        }
-        /* Card hover improvements */
-        .step-card {
-            transition: all 0.3s ease;
-        }
-        .step-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        /* Form input focus improvements */
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            ring: 2px;
-            ring-color: #2284B8;
-            border-color: #2284B8;
-            box-shadow: 0 0 0 3px rgba(34, 132, 184, 0.1);
-        }
-        /* Fade in animation for cards */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        /* Better button shadows */
-        .brand-blue-bg {
-            box-shadow: 0 4px 6px rgba(34, 132, 184, 0.2);
-        }
-        .brand-blue-bg:hover {
-            box-shadow: 0 6px 12px rgba(34, 132, 184, 0.3);
-            transform: translateY(-2px);
-        }
-        .step-indicator.active {
-            background-color: #2284B8;
-            color: white;
-        }
-        .step-indicator.completed {
-            background-color: #0369A1;
-            color: white;
-        }
-        #payment-element {
-            margin: 20px 0;
-        }
-        /* Calendar and loading spinner styles for UX improvements */
-        .calendar-day-selected {
-            background-color: #3B82F6 !important;
-            color: white !important;
-            border-color: #2563EB !important;
-        }
-        .calendar-day-selected div {
-            color: white !important;
-        }
-        .loading-spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #3B82F6;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Success and error message improvements */
-        .text-green-600, .text-green-500 {
-            color: #10B981;
-        }
-        .bg-green-100 {
-            background-color: #D1FAE5;
-        }
-        .text-green-800 {
-            color: #065F46;
-        }
-        .text-red-600 {
-            color: #DC2626;
-        }
-        .bg-red-50 {
-            background-color: #FEF2F2;
-        }
-        /* Smooth all card appearances */
-        .bg-white.rounded-lg {
-            animation: fadeInUp 0.4s ease-out;
-        }
-        /* Better disabled state */
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        /* Trust badge animations */
-        .rounded-full.text-sm {
-            animation: fadeInUp 0.6s ease-out;
-            animation-fill-mode: both;
-        }
-        .rounded-full.text-sm:nth-child(1) { animation-delay: 0.1s; }
-        .rounded-full.text-sm:nth-child(2) { animation-delay: 0.2s; }
-        .rounded-full.text-sm:nth-child(3) { animation-delay: 0.3s; }
-    </style>
+
 </head>
-<body style="background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 15%, #93c5fd 30%, #60a5fa 50%, #93c5fd 70%, #bfdbfe 85%, #dbeafe 100%); background-attachment: fixed; min-height: 100vh;">
+<body class="bg-gradient" style="background-attachment: fixed; min-height: 100vh;">
 
     <!-- Top Bar -->
-    <div class="dark-section text-white text-center py-2 text-sm font-medium tracking-wider">
+    <div class="bg-primary text-center py-2 text-sm font-medium tracking-wider">
         199 Scoles Ave, Clifton NJ | <a href="tel:973-820-1153" class="font-bold hover:underline">Call or Text 973-820-1153</a>
     </div>
 
     <!-- Header -->
-    <nav class="bg-white sticky top-0 z-50 shadow-md">
+    <nav class="nav">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <!-- Logo (Left) -->
             <div class="flex-shrink-0">
@@ -206,7 +67,7 @@
             
             <!-- Book Now Button (Right, Desktop) -->
             <div class="hidden md:flex flex-shrink-0">
-                <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full text-md transition duration-300 transform hover:scale-105 shadow-sm">Book Now</a>
+                <a href="safestroke-booking.html" class="btn btn-primary btn-sm">Book Now</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -226,17 +87,17 @@
             <a href="safestroke-reviews.html" class="block py-2 text-gray-800">Reviews</a>
             <a href="safestroke-location.html" class="block py-2 text-gray-800">Our Location</a>
             <div class="mt-4 pt-4 border-t">
-                 <a href="safestroke-booking.html" class="block w-full text-center brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-300">Book Now</a>
+                 <a href="safestroke-booking.html" class="btn btn-primary w-full">Book Now</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="py-24">
+    <main class="section">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
-                <h1 class="text-5xl md:text-6xl font-black">Book Your Lessons</h1>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">Follow the simple steps below to purchase a package or schedule your next lesson.</p>
+                <h1>Book Your Lessons</h1>
+                <p class="text-lg text-neutral max-w-2xl mx-auto mt-4">Follow the simple steps below to purchase a package or schedule your next lesson.</p>
                 <!-- Trust Badges -->
                 <div class="flex flex-wrap justify-center gap-4 mt-6">
                     <span class="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">

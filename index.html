@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/safestroke-design-system.css">
     
     <!-- Meta Pixel Code -->
     <script>
@@ -35,191 +36,22 @@
     src="https://www.facebook.com/tr?id=642654784918679&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Meta Pixel Code -->
-    <style>
-        body { 
-            font-family: 'Outfit', sans-serif; 
-            color: #00253D;
-        }
-        /* Add padding bottom on mobile for sticky button */
-        @media (max-width: 767px) {
-            body { padding-bottom: 80px; }
-        }
-        .hero-bg { 
-            background-image: linear-gradient(rgba(0, 37, 61, 0.75), rgba(34, 132, 184, 0.85)), url('safestroke-images/davejohnnyfront.jpg'); 
-            background-size: cover; 
-            background-position: center;
-            position: relative;
-            border-radius: 0 0 2rem 2rem;
-            overflow: hidden;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center top, rgba(34, 132, 184, 0.3) 0%, transparent 60%);
-            pointer-events: none;
-        }
-        .dark-section { 
-            background: linear-gradient(135deg, #00253D 0%, #00365C 50%, #00253D 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .dark-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(34, 132, 184, 0.08) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(120deg); }
-            66% { transform: translate(-20px, 20px) rotate(240deg); }
-        }
-        .gradient-bg {
-            background: linear-gradient(180deg, 
-                rgba(219, 234, 254, 0.4) 0%, 
-                rgba(191, 219, 254, 0.3) 25%, 
-                rgba(147, 197, 253, 0.2) 50%, 
-                rgba(191, 219, 254, 0.3) 75%, 
-                rgba(219, 234, 254, 0.4) 100%);
-        }
-        .white-section {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fbff 50%, #ffffff 100%);
-            position: relative;
-        }
-        .card-gradient {
-            background: linear-gradient(145deg, #ffffff 0%, #f9fafe 100%);
-        }
-        .brand-blue { color: #2284B8; }
-        .brand-blue-bg { 
-            background: linear-gradient(135deg, #2284B8 0%, #1976a3 100%);
-            box-shadow: 0 4px 15px rgba(34, 132, 184, 0.3);
-        }
-        .brand-blue-bg:hover {
-            background: linear-gradient(135deg, #1976a3 0%, #15628a 100%);
-            box-shadow: 0 6px 20px rgba(34, 132, 184, 0.4);
-            transform: translateY(-2px);
-        }
-        .nav-link { transition: color 0.3s; position: relative; }
-        .nav-link.active { font-weight: 700; color: #2284B8; }
-        .nav-link:not(.active):hover { color: #2284B8; }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(90deg, #2284B8, #1976a3);
-            transition: width 0.3s ease-in-out;
-            border-radius: 1px;
-        }
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 100%;
-        }
-        .logo-shadow {
-            filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 40px rgba(34, 132, 184, 0.8));
-        }
-        /* Smooth transitions */
-        button, a, input, textarea, [class*="hover:"] {
-            transition: all 0.3s ease;
-        }
-        button:active {
-            transform: scale(0.98);
-        }
-        /* Form input focus improvements */
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: #2284B8;
-            box-shadow: 0 0 0 3px rgba(34, 132, 184, 0.1);
-        }
-        /* Fade in animation */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fade-in {
-            animation: fadeInUp 0.6s ease-out;
-        }
-        /* Program card hover improvements */
-        .program-card {
-            background: linear-gradient(145deg, #ffffff 0%, #fafcff 100%);
-            border-radius: 1.5rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .program-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(34, 132, 184, 0.15);
-            background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
-        }
-        /* Reviews card style */
-        .review-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.5rem;
-        }
-        /* Announcement bar gradient */
-        .announcement-gradient {
-            background: linear-gradient(90deg, #10b981 0%, #3b82f6 50%, #10b981 100%);
-            background-size: 200% 100%;
-            animation: gradientShift 3s ease infinite;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        /* CTA section background pattern */
-        .cta-pattern {
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(34, 132, 184, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(34, 132, 184, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(34, 132, 184, 0.03) 0%, transparent 50%);
-        }
-        /* Footer gradient overlay */
-        .footer-gradient {
-            background: linear-gradient(170deg, #00253D 0%, #00365C 40%, #00253D 100%);
-        }
-        /* Subtle animations */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        .pulse-subtle {
-            animation: pulse 3s ease-in-out infinite;
-        }
-    </style>
+
 </head>
-<body class="gradient-bg">
+<body class="bg-gradient">
 
     <!-- Announcement Bar -->
-    <div class="announcement-gradient text-white text-center py-2.5 text-sm font-bold rounded-b-lg">
+    <div class="animate-gradient text-white text-center py-2.5 text-sm font-bold rounded-b-lg" style="background: linear-gradient(90deg, #10b981 0%, #3b82f6 50%, #10b981 100%);">
         🎉 LIMITED TIME: First Lesson FREE for New Students - Use Code: FIRST-FREE
     </div>
 
     <!-- Top Bar -->
-    <div class="dark-section text-white text-center py-2.5 text-sm font-medium tracking-wider relative z-10">
+    <div class="bg-primary text-center py-2.5 text-sm font-medium tracking-wider relative" style="z-index: var(--z-sticky);">
         199 Scoles Ave, Clifton NJ | <a href="tel:973-820-1153" class="font-bold hover:text-blue-300 transition-colors">Call or Text 973-820-1153</a>
     </div>
 
     <!-- Header -->
-    <nav class="bg-white sticky top-0 z-50 shadow-lg rounded-b-2xl">
+    <nav class="nav rounded-b-2xl">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <!-- Logo (Left) -->
             <div class="flex-shrink-0 md:flex-grow-0">
@@ -240,7 +72,7 @@
             
             <!-- Book Now Button (Right, Desktop) -->
             <div class="hidden md:flex flex-shrink-0">
-                <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-2.5 px-7 rounded-full text-md transition duration-300 transform hover:scale-105">Book Now</a>
+                <a href="safestroke-booking.html" class="btn btn-primary btn-sm">Book Now</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -260,13 +92,13 @@
             <a href="safestroke-reviews.html" class="block py-2 text-gray-800">Reviews</a>
             <a href="safestroke-location.html" class="block py-2 text-gray-800">Our Location</a>
             <div class="mt-4 pt-4 border-t">
-                 <a href="safestroke-booking.html" class="block w-full text-center brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-300">Book Now</a>
+                 <a href="safestroke-booking.html" class="btn btn-primary w-full">Book Now</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg text-white mx-4 mt-4">
+    <header class="hero hero-bg text-white mx-4 mt-4">
         <div class="container mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32 text-center flex flex-col items-center relative z-10">
             <div class="hidden md:block mb-8 animate-fade-in">
                 <img src="safestroke-images/safestroke_logo.png" alt="SafeStroke Logo" class="h-40 w-auto logo-shadow">
@@ -274,7 +106,7 @@
             <h1 class="text-5xl md:text-7xl font-black leading-tight max-w-4xl animate-fade-in" style="text-shadow: 0 3px 8px rgba(0,0,0,0.5);">Learn Fast. Swim <span class="text-blue-300">Safe</span>.</h1>
             <p class="text-xl md:text-2xl mt-4 mb-8 max-w-2xl animate-fade-in opacity-95">Our proven method transforms nervous beginners into capable swimmers — guaranteed.</p>
 
-            <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105 animate-fade-in">Claim Your FREE Trial Lesson →</a>
+            <a href="safestroke-booking.html" class="btn btn-accent btn-lg animate-fade-in">Claim Your FREE Trial Lesson →</a>
             <p class="mt-4 text-sm opacity-90 animate-fade-in">No commitments • No payment info • 100% Free</p>
         </div>
     </header>
@@ -283,85 +115,85 @@
     <main>
 
         <!-- Programs Section -->
-        <section class="py-24 white-section">
+        <section class="section bg-light">
             <div class="container mx-auto px-6 text-center">
                 <div class="inline-flex items-center gap-2 bg-gradient-to-r from-green-100 to-blue-100 text-green-800 px-5 py-2.5 rounded-full text-sm font-semibold mb-4">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                     Red Cross Certified Instructors
                 </div>
-                <h2 class="text-4xl font-black mb-4">Find the Perfect Program for Your Child</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-16">Small groups, big results. Every child gets the attention they deserve.</p>
+                <h2>Find the Perfect Program for Your Child</h2>
+                <p class="text-lg text-neutral max-w-2xl mx-auto mb-16">Small groups, big results. Every child gets the attention they deserve.</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Droplet -->
-                    <div class="program-card p-8 shadow-xl border border-gray-100 flex flex-col text-left group">
+                    <div class="card card-gradient flex flex-col text-left group">
                         <div class="flex-grow">
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/droplet-shield.png" alt="Droplet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">Droplet</h3>
-                            <p class="font-semibold text-gray-600 mb-4">Ages 3-24 months (Parent & Child)</p>
-                            <p class="text-gray-700 mb-4">A gentle introduction to the water for babies and toddlers. Parents join in as little swimmers build comfort, safety awareness, and early water skills through songs, games, and guided movement.</p>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 8:1 ratio for social learning</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Water safety fundamentals</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Parent education included</li>
+                            <h3 class="transition-colors duration-300 group-hover:text-primary">Droplet</h3>
+                            <p class="font-semibold text-neutral mb-4">Ages 3-24 months (Parent & Child)</p>
+                            <p class="text-neutral mb-4">A gentle introduction to the water for babies and toddlers. Parents join in as little swimmers build comfort, safety awareness, and early water skills through songs, games, and guided movement.</p>
+                            <ul class="text-sm text-neutral space-y-1 mb-4">
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> 8:1 ratio for social learning</li>
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> Water safety fundamentals</li>
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> Parent education included</li>
                             </ul>
                         </div>
                         <div class="mt-auto pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Starting at</p>
-                            <p class="text-2xl font-bold brand-blue">$25<span class="text-sm text-gray-500">/lesson</span></p>
+                            <p class="text-sm text-neutral">Starting at</p>
+                            <p class="text-2xl font-bold text-primary">$25<span class="text-sm text-neutral">/lesson</span></p>
                         </div>
                     </div>
                     <!-- Splashlet -->
-                    <div class="program-card p-8 shadow-xl border border-gray-100 flex flex-col text-left group">
+                    <div class="card card-gradient flex flex-col text-left group">
                         <div class="flex-grow">
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/splashlet-shield.png" alt="Splashlet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">Splashlet</h3>
-                            <p class="font-semibold text-gray-600 mb-4">Ages 2-3 years</p>
-                            <p class="text-gray-700 mb-4">Perfect for toddlers ready for more independence. Instructors lead engaging lessons that build water confidence, introduce safety skills, and encourage movement through playful activities.</p>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 4:1 small group ratio</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Building independence</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Fun skill progression</li>
+                            <h3 class="transition-colors duration-300 group-hover:text-primary">Splashlet</h3>
+                            <p class="font-semibold text-neutral mb-4">Ages 2-3 years</p>
+                            <p class="text-neutral mb-4">Perfect for toddlers ready for more independence. Instructors lead engaging lessons that build water confidence, introduce safety skills, and encourage movement through playful activities.</p>
+                            <ul class="text-sm text-neutral space-y-1 mb-4">
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> 4:1 small group ratio</li>
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> Building independence</li>
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> Fun skill progression</li>
                             </ul>
                         </div>
                         <div class="mt-auto pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Starting at</p>
-                            <p class="text-2xl font-bold brand-blue">$35<span class="text-sm text-gray-500">/lesson</span></p>
+                            <p class="text-sm text-neutral">Starting at</p>
+                            <p class="text-2xl font-bold text-primary">$35<span class="text-sm text-neutral">/lesson</span></p>
                         </div>
                     </div>
                     <!-- Strokelet -->
-                    <div class="program-card p-8 shadow-xl border border-gray-100 flex flex-col text-left group relative overflow-hidden">
+                    <div class="card card-gradient flex flex-col text-left group relative overflow-hidden">
                         <div class="absolute top-0 right-0 bg-gradient-to-l from-yellow-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">MOST POPULAR</div>
                         <div class="flex-grow">
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/strokelet-shield.png" alt="Strokelet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">Strokelet</h3>
-                            <p class="font-semibold text-gray-600 mb-4">Ages 3-12 years</p>
-                            <p class="text-gray-700 mb-4">Our signature program for rapid skill development. Students master breath control, floating, and proper stroke technique in a structured, supportive environment.</p>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 3:1 max ratio</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 12-lesson progression</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Swimming guaranteed*</li>
+                            <h3 class="transition-colors duration-300 group-hover:text-primary">Strokelet</h3>
+                            <p class="font-semibold text-neutral mb-4">Ages 3-12 years</p>
+                            <p class="text-neutral mb-4">Our signature program for rapid skill development. Students master breath control, floating, and proper stroke technique in a structured, supportive environment.</p>
+                            <ul class="text-sm text-neutral space-y-1 mb-4">
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> 3:1 max ratio</li>
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> 12-lesson progression</li>
+                                <li class="flex items-start"><span class="text-success mr-2">✓</span> Swimming guaranteed*</li>
                             </ul>
                         </div>
                         <div class="mt-auto pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Starting at</p>
-                            <p class="text-2xl font-bold brand-blue">$40<span class="text-sm text-gray-500">/lesson</span></p>
+                            <p class="text-sm text-neutral">Starting at</p>
+                            <p class="text-2xl font-bold text-primary">$40<span class="text-sm text-neutral">/lesson</span></p>
                         </div>
                     </div>
                 </div>
-                <a href="safestroke-programs.html" class="mt-16 inline-block brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">See All Program Details</a>
+                <a href="safestroke-programs.html" class="btn btn-primary btn-lg mt-16">See All Program Details</a>
             </div>
         </section>
 
         <!-- About Section -->
-        <section class="dark-section py-24 relative z-10">
+        <section class="section bg-primary relative z-10">
             <div class="container mx-auto px-6 text-center relative z-10">
-                <h2 class="text-4xl font-black mb-4">About SafeStroke Swim Academy</h2>
+                <h2>About SafeStroke Swim Academy</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-lg opacity-90">At SafeStroke, we do swim lessons differently. Based in North Jersey, we help kids gain real skills and confidence — efficiently.</p>
                 <div class="mt-12 max-w-4xl mx-auto">
                     <p class="text-2xl font-bold mb-8">Why Families Choose Us:</p>
@@ -384,7 +216,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="safestroke-aboutus.html" class="mt-12 inline-block border-2 border-white/80 hover:bg-white hover:text-gray-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">More About Our Method</a>
+                <a href="safestroke-aboutus.html" class="btn btn-ghost mt-12">More About Our Method</a>
             </div>
         </section>
 
@@ -395,7 +227,7 @@
                 <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
             </div>
             <div class="container mx-auto px-6 text-center relative z-10">
-                <h2 class="text-4xl font-black mb-4">Real Parents. Real Results.</h2>
+                <h2>Real Parents. Real Results.</h2>
                 <div class="flex justify-center items-center gap-4 mb-12">
                     <div class="flex">
                         <span class="text-yellow-400 text-2xl">★★★★★</span>
@@ -429,16 +261,16 @@
                         </div>
                     </div>
                 </div>
-                <a href="safestroke-reviews.html" class="mt-12 inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">Read All Reviews →</a>
+                <a href="safestroke-reviews.html" class="btn btn-secondary mt-12">Read All Reviews →</a>
             </div>
         </section>
         
         <!-- CTA Section -->
-        <section class="white-section cta-pattern py-24">
+        <section class="section bg-light" style="background-image: radial-gradient(circle at 20% 80%, rgba(34, 132, 184, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(34, 132, 184, 0.05) 0%, transparent 50%), radial-gradient(circle at 40% 40%, rgba(34, 132, 184, 0.03) 0%, transparent 50%);">
             <div class="container mx-auto px-6 text-center">
-                 <h2 class="text-4xl font-black">Your Child Deserves to Swim with Confidence</h2>
-                 <p class="text-2xl font-bold brand-blue my-2">Join Families Who Trust SafeStroke</p>
-                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Stop wondering if your child will ever feel safe in the water. Our proven method, small classes, and expert instructors deliver the results you've been looking for.</p>
+                 <h2>Your Child Deserves to Swim with Confidence</h2>
+                 <p class="text-2xl font-bold text-primary my-2">Join Families Who Trust SafeStroke</p>
+                 <p class="mt-4 max-w-3xl mx-auto text-lg text-neutral">Stop wondering if your child will ever feel safe in the water. Our proven method, small classes, and expert instructors deliver the results you've been looking for.</p>
                  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto">
                       <div class="text-center">
                            <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md">
@@ -465,14 +297,14 @@
                      <span class="font-bold">100% Satisfaction Guarantee • Risk-Free Trial Lesson</span>
                  </div>
                  <div class="block">
-                     <a href="safestroke-booking.html" class="inline-block brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-12 rounded-full text-xl transition duration-300 transform hover:scale-105">Start with a FREE Trial →</a>
+                     <a href="safestroke-booking.html" class="btn btn-accent btn-xl">Start with a FREE Trial →</a>
                  </div>
             </div>
         </section>
     </main>
 
     <!-- Enhanced Footer -->
-    <footer class="footer-gradient pt-16 pb-8 relative">
+    <footer class="bg-primary pt-16 pb-8 relative" style="background: linear-gradient(170deg, var(--color-secondary-main) 0%, var(--color-secondary-dark) 40%, var(--color-secondary-main) 100%);">
         <div class="container mx-auto px-6 relative z-10">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                 <!-- Logo & About -->
@@ -539,7 +371,7 @@
     
     <!-- Mobile Sticky Book Now Button -->
     <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t shadow-2xl rounded-t-2xl">
-        <a href="safestroke-booking.html" class="block w-full brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-center text-lg transition duration-300">
+        <a href="safestroke-booking.html" class="btn btn-primary w-full text-center">
             Book Now - Free Trial Available
         </a>
     </div>
