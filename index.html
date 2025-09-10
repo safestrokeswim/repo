@@ -65,26 +65,18 @@
                 filter: brightness(0.86) contrast(1.06) saturate(0.95);
             }
         }
-        /* Mobile: Solid navy background with brand graphics */
+        /* Mobile: Use new cropped hero image */
         @media (max-width: 768px) {
             .hero-bg {
-                background: #0B3856;
+                background-image: url('safestroke-images/johnnydaveback - Copy.png');
+                background-size: cover;
+                background-position: center top;
+                background-repeat: no-repeat;
                 padding-bottom: 96px; /* space for sticky CTA */
             }
+            /* Remove the decorative graphics overlay on mobile since we have the photo */
             .hero-bg::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background-image: 
-                    radial-gradient(circle at 20% 30%, rgba(34, 132, 184, 0.08) 0%, transparent 50%),
-                    radial-gradient(circle at 80% 70%, rgba(94, 174, 221, 0.06) 0%, transparent 50%),
-                    radial-gradient(circle at 50% 90%, rgba(34, 132, 184, 0.04) 0%, transparent 60%),
-                    radial-gradient(circle at 10% 80%, rgba(233, 245, 252, 0.03) 0%, transparent 40%);
-                pointer-events: none;
-                z-index: 1;
+                display: none;
             }
         }
         /* Desktop/Tablet overlay only */
@@ -133,10 +125,10 @@
             }
         }
         .hero-content-panel {
-            background: rgba(11,56,86,0.24);
-            backdrop-filter: blur(9px);
+            background: rgba(11,56,86,0.26);
+            backdrop-filter: blur(10px);
             border-radius: 16px;
-            padding: clamp(28px, 4vw, 32px);
+            padding: clamp(24px, 4vw, 32px);
             max-width: min(92vw, 640px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.18);
             position: relative;
@@ -145,18 +137,20 @@
         @media (min-width: 769px) {
             .hero-content-panel {
                 max-width: min(60vw, 640px);
+                background: rgba(11,56,86,0.24); /* slightly lighter for desktop photo */
             }
         }
         @media (max-width: 768px) {
             .hero-content-panel {
-                max-width: 88%; /* slightly wider for mobile */
-                background: rgba(11,56,86,0.22); /* adjusted opacity */
+                max-width: 90%; /* 85-90% width range */
+                background: rgba(11,56,86,0.26); /* stronger tint for mobile photo */
+                backdrop-filter: blur(8px); /* slightly less blur on mobile */
                 margin: 0 auto; /* center on mobile */
             }
         }
         .hero-title {
             font-family: 'Outfit', sans-serif;
-            font-weight: 600;
+            font-weight: 600; /* SemiBold */
             font-size: clamp(28px, 3.5vw, 48px);
             line-height: 1.1;
             color: #FFFFFF;
@@ -170,20 +164,21 @@
                 font-size: clamp(28px, 7.2vw, 32px);
                 line-height: 1.15;
                 text-align: center;
+                /* Keep entire headline white on mobile for contrast */
             }
         }
         .hero-title .accent {
-            color: #2284B8;
+            color: #2284B8; /* Brand blue accent on desktop */
         }
         @media (max-width: 768px) {
             .hero-title .accent {
-                color: #FFFFFF;
-                text-shadow: 0 2px 8px rgba(0,0,0,0.4); /* extra shadow for mobile contrast */
+                color: #FFFFFF; /* White on mobile for maximum contrast */
+                text-shadow: 0 2px 8px rgba(0,0,0,0.4);
             }
         }
         .hero-subtitle {
             font-family: 'Outfit', sans-serif;
-            font-weight: 400;
+            font-weight: 400; /* Regular */
             font-size: clamp(16px, 1.5vw, 20px);
             line-height: 1.45;
             color: rgba(255, 255, 255, 0.90);
@@ -200,7 +195,7 @@
         }
         .hero-buttons {
             display: flex;
-            gap: clamp(16px, 3vw, 20px);
+            gap: clamp(16px, 3vw, 20px); /* 16-20px gap */
             margin-bottom: 24px;
             position: relative;
             z-index: 1;
@@ -208,7 +203,7 @@
         @media (max-width: 768px) {
             .hero-buttons {
                 flex-direction: column;
-                gap: 14px;
+                gap: 14px; /* 12-16px range */
             }
         }
         .btn-primary {
@@ -226,12 +221,12 @@
             min-height: 56px;
             transition: all 0.3s ease;
             border: none;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* stronger shadow */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
         }
         .btn-primary:hover {
-            background: #2D96CC;
+            background: #2D96CC; /* Specified hover color */
             transform: scale(1.02);
         }
         .btn-primary:focus {
@@ -253,12 +248,12 @@
             justify-content: center;
             min-height: 56px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* stronger shadow to match primary */
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
         }
         .btn-secondary:hover {
-            background: #2284B8;
+            background: #2284B8; /* Fill with brand blue */
             color: white;
             border-color: #2284B8;
         }
@@ -273,8 +268,8 @@
             }
         }
         .trust-badge {
-            background: rgba(11,56,86,0.40);
-            border-radius: 10px;
+            background: rgba(11,56,86,0.40); /* Navy ~40% opacity */
+            border-radius: 10px; /* Rounded corners */
             padding: 9px 12px;
             margin-bottom: 12px;
             display: inline-flex;
@@ -284,15 +279,15 @@
             z-index: 1;
         }
         .trust-badge .stars {
-            color: #FFD166;
+            color: #FFD166; /* Gold stars */
             font-size: 14px;
             line-height: 1;
         }
         .trust-badge .text {
             color: rgba(255, 255, 255, 0.90);
             font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: clamp(14px, 2.5vw, 16px);
+            font-weight: 500; /* Medium */
+            font-size: clamp(14px, 2.5vw, 16px); /* 14-16px range */
         }
         @media (max-width: 768px) {
             .trust-badge {
@@ -304,7 +299,7 @@
             color: rgba(255, 255, 255, 0.84);
             font-family: 'Outfit', sans-serif;
             font-weight: 400;
-            font-size: clamp(15px, 2.2vw, 16px);
+            font-size: clamp(15px, 2.2vw, 16px); /* 15-16px on mobile */
             position: relative;
             z-index: 1;
             line-height: 1.4;
@@ -312,7 +307,7 @@
         @media (max-width: 768px) {
             .trust-subtext {
                 text-align: center;
-                font-size: 16px; /* better mobile legibility */
+                font-size: 16px; /* Better mobile legibility */
             }
         }
         /* Sticky CTA responsive height */
