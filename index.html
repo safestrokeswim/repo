@@ -42,34 +42,63 @@
         }
         /* Add padding bottom on mobile for sticky button */
         @media (max-width: 768px) {
-            body { padding-bottom: 80px; }
+            body { padding-bottom: 88px; }
+        }
+        @media (max-width: 768px) and (max-height: 700px) {
+            body { padding-bottom: 72px; }
         }
         .hero-bg { 
-            background-image: url('safestroke-images/davejohnnyfront.jpg'); 
-            background-size: cover; 
-            background-position: center left;
             position: relative;
             border-radius: 0 0 2rem 2rem;
             overflow: hidden;
             min-height: 100svh;
             min-height: 100vh; /* fallback */
-            filter: brightness(0.86) contrast(1.06) saturate(0.95);
+            display: flex;
+            flex-direction: column;
         }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(180deg, rgba(11,56,86,0.16) 0%, rgba(11,56,86,0.30) 60%, rgba(11,56,86,0.34) 100%);
-            pointer-events: none;
-            z-index: 1;
+        /* Desktop/Tablet: Use photo background */
+        @media (min-width: 769px) {
+            .hero-bg {
+                background-image: url('safestroke-images/davejohnnyfront.jpg');
+                background-size: cover;
+                background-position: center left;
+                filter: brightness(0.86) contrast(1.06) saturate(0.95);
+            }
         }
+        /* Mobile: Solid navy background with brand graphics */
         @media (max-width: 768px) {
             .hero-bg {
-                background-position: 75% center; /* shift right on mobile to show faces */
+                background: #0B3856;
                 padding-bottom: 96px; /* space for sticky CTA */
+            }
+            .hero-bg::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: 
+                    radial-gradient(circle at 20% 30%, rgba(34, 132, 184, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(94, 174, 221, 0.06) 0%, transparent 50%),
+                    radial-gradient(circle at 50% 90%, rgba(34, 132, 184, 0.04) 0%, transparent 60%),
+                    radial-gradient(circle at 10% 80%, rgba(233, 245, 252, 0.03) 0%, transparent 40%);
+                pointer-events: none;
+                z-index: 1;
+            }
+        }
+        /* Desktop/Tablet overlay only */
+        @media (min-width: 769px) {
+            .hero-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(180deg, rgba(11,56,86,0.16) 0%, rgba(11,56,86,0.30) 60%, rgba(11,56,86,0.34) 100%);
+                pointer-events: none;
+                z-index: 1;
             }
         }
 
@@ -78,8 +107,9 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 72px;
+            height: 100px;
             z-index: 3;
+            margin-top: auto;
         }
         .hero-wave svg {
             width: 100%;
@@ -89,7 +119,7 @@
         .hero-container {
             position: relative;
             z-index: 10;
-            height: 100%;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -97,16 +127,16 @@
         }
         @media (max-width: 768px) {
             .hero-container {
-                justify-content: flex-start; /* left align on mobile to match panel */
-                align-items: flex-start;
+                justify-content: center; /* center on mobile */
+                align-items: center; /* center vertically */
                 padding: clamp(50px, 12vh, 100px) 16px clamp(40px, 8vh, 80px); /* more top padding */
             }
         }
         .hero-content-panel {
-            background: rgba(11,56,86,0.22);
-            backdrop-filter: blur(10px);
+            background: rgba(11,56,86,0.24);
+            backdrop-filter: blur(9px);
             border-radius: 16px;
-            padding: clamp(24px, 4vw, 32px);
+            padding: clamp(28px, 4vw, 32px);
             max-width: min(92vw, 640px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.18);
             position: relative;
@@ -119,14 +149,15 @@
         }
         @media (max-width: 768px) {
             .hero-content-panel {
-                max-width: 85%; /* narrower on mobile */
-                margin-right: auto; /* anchor left */
+                max-width: 88%; /* slightly wider for mobile */
+                background: rgba(11,56,86,0.22); /* adjusted opacity */
+                margin: 0 auto; /* center on mobile */
             }
         }
         .hero-title {
             font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            font-size: clamp(32px, 3.5vw, 48px);
+            font-weight: 600;
+            font-size: clamp(28px, 3.5vw, 48px);
             line-height: 1.1;
             color: #FFFFFF;
             margin-bottom: 24px;
@@ -136,7 +167,7 @@
         }
         @media (max-width: 768px) {
             .hero-title {
-                font-size: clamp(24px, 7.2vw, 32px);
+                font-size: clamp(28px, 7.2vw, 32px);
                 line-height: 1.15;
                 text-align: center;
             }
@@ -155,14 +186,14 @@
             font-weight: 400;
             font-size: clamp(16px, 1.5vw, 20px);
             line-height: 1.45;
-            color: rgba(255, 255, 255, 0.92);
+            color: rgba(255, 255, 255, 0.90);
             margin-bottom: 24px;
             position: relative;
             z-index: 1;
         }
         @media (max-width: 768px) {
             .hero-subtitle {
-                font-size: clamp(15px, 4.2vw, 18px);
+                font-size: clamp(16px, 4.2vw, 18px);
                 line-height: 1.5;
                 text-align: center;
             }
@@ -177,14 +208,14 @@
         @media (max-width: 768px) {
             .hero-buttons {
                 flex-direction: column;
-                gap: 12px;
+                gap: 14px;
             }
         }
         .btn-primary {
             background: #2284B8;
             color: white;
             border-radius: 12px;
-            padding: clamp(14px, 2vw, 16px) clamp(28px, 4vw, 32px);
+            padding: clamp(15px, 2vw, 16px) clamp(28px, 4vw, 32px);
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 18px;
@@ -192,7 +223,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 54px;
+            min-height: 56px;
             transition: all 0.3s ease;
             border: none;
             box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* stronger shadow */
@@ -212,7 +243,7 @@
             color: white;
             border: 2px solid white;
             border-radius: 12px;
-            padding: clamp(12px, 2vw, 14px) clamp(26px, 4vw, 30px);
+            padding: clamp(13px, 2vw, 14px) clamp(26px, 4vw, 30px);
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 18px;
@@ -220,7 +251,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            min-height: 54px;
+            min-height: 56px;
             transition: all 0.3s ease;
             box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* stronger shadow to match primary */
             position: relative;
@@ -238,13 +269,13 @@
         @media (max-width: 768px) {
             .btn-primary, .btn-secondary {
                 width: 100%;
-                min-height: 48px;
+                min-height: 52px;
             }
         }
         .trust-badge {
             background: rgba(11,56,86,0.40);
             border-radius: 10px;
-            padding: 8px 10px;
+            padding: 9px 12px;
             margin-bottom: 12px;
             display: inline-flex;
             align-items: center;
@@ -281,6 +312,20 @@
         @media (max-width: 768px) {
             .trust-subtext {
                 text-align: center;
+                font-size: 16px; /* better mobile legibility */
+            }
+        }
+        /* Sticky CTA responsive height */
+        .sticky-cta {
+            padding: 16px;
+        }
+        @media (max-width: 768px) and (max-height: 700px) {
+            .sticky-cta {
+                padding: 12px;
+            }
+            .sticky-cta a {
+                padding: 10px 20px;
+                font-size: 16px;
             }
         }
         .dark-section { 
@@ -496,14 +541,27 @@
             </div>
         </div>
         <div class="hero-wave">
-            <svg viewBox="0 0 1200 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#2284B8;stop-opacity:1" />
+                    <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#2284B8;stop-opacity:0.9" />
+                        <stop offset="100%" style="stop-color:#2284B8;stop-opacity:0.7" />
+                    </linearGradient>
+                    <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#5EAEDD;stop-opacity:0.8" />
+                        <stop offset="100%" style="stop-color:#5EAEDD;stop-opacity:0.6" />
+                    </linearGradient>
+                    <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#E9F5FC;stop-opacity:0.9" />
                         <stop offset="100%" style="stop-color:#E9F5FC;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <path d="M0,60 C300,20 600,40 900,30 C1050,25 1150,35 1200,30 L1200,80 L0,80 Z" fill="url(#waveGradient)"/>
+                <!-- Bottom layer - lightest -->
+                <path d="M0,45 C200,35 400,50 600,40 C800,30 1000,45 1200,35 L1200,100 L0,100 Z" fill="url(#waveGradient3)"/>
+                <!-- Middle layer -->
+                <path d="M0,55 C300,25 600,45 900,35 C1050,30 1150,40 1200,35 L1200,100 L0,100 Z" fill="url(#waveGradient2)"/>
+                <!-- Top layer - darkest -->
+                <path d="M0,65 C250,35 500,55 750,45 C900,40 1100,50 1200,45 L1200,100 L0,100 Z" fill="url(#waveGradient1)"/>
             </svg>
         </div>
         <img src="safestroke-images/davejohnnyfront.jpg" alt="Toddler swim lesson with instructor at SafeStroke Swim Academy, Clifton NJ" style="display: none;">
@@ -768,7 +826,7 @@
     </footer>
     
     <!-- Mobile Sticky Book Now Button -->
-    <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t shadow-2xl rounded-t-2xl">
+    <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 p-4 bg-white border-t shadow-2xl rounded-t-2xl sticky-cta">
         <a href="safestroke-booking.html" class="block w-full brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-center text-lg transition duration-300">
             Book Now - Free Trial Available
         </a>
