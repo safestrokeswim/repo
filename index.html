@@ -70,7 +70,7 @@
             .hero-bg {
                 background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
                 background-size: cover;
-                background-position: center top;
+                background-position: center 20%; /* Recenter to show child's face better */
                 background-repeat: no-repeat;
                 padding-bottom: 96px; /* space for sticky CTA */
             }
@@ -99,7 +99,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100px;
+            height: 120px; /* Increased height for stronger presence */
             z-index: 3;
             margin-top: auto;
         }
@@ -120,13 +120,13 @@
         @media (max-width: 768px) {
             .hero-container {
                 justify-content: center; /* center on mobile */
-                align-items: center; /* center vertically */
-                padding: clamp(50px, 12vh, 100px) 16px clamp(40px, 8vh, 80px); /* more top padding */
+                align-items: flex-end; /* Position lower to show more of child's face */
+                padding: clamp(40px, 8vh, 80px) 16px clamp(60px, 10vh, 120px); /* Lower positioning */
             }
         }
         .hero-content-panel {
-            background: rgba(11,56,86,0.26);
-            backdrop-filter: blur(10px);
+            background: rgba(11,56,86,0.20); /* Reduced opacity 18-20% */
+            backdrop-filter: blur(10px); /* Increased blur for softer effect */
             border-radius: 16px;
             padding: clamp(24px, 4vw, 32px);
             max-width: min(92vw, 640px);
@@ -137,14 +137,14 @@
         @media (min-width: 769px) {
             .hero-content-panel {
                 max-width: min(60vw, 640px);
-                background: rgba(11,56,86,0.24); /* slightly lighter for desktop photo */
+                background: rgba(11,56,86,0.24); /* slightly darker for desktop photo */
             }
         }
         @media (max-width: 768px) {
             .hero-content-panel {
-                max-width: 90%; /* 85-90% width range */
-                background: rgba(11,56,86,0.26); /* stronger tint for mobile photo */
-                backdrop-filter: blur(8px); /* slightly less blur on mobile */
+                max-width: 88%; /* 85-90% width range for balance */
+                background: rgba(11,56,86,0.18); /* Lighter 18% opacity on mobile */
+                backdrop-filter: blur(9px); /* Softer blur on mobile */
                 margin: 0 auto; /* center on mobile */
             }
         }
@@ -152,18 +152,19 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 600; /* SemiBold */
             font-size: clamp(28px, 3.5vw, 48px);
-            line-height: 1.1;
+            line-height: 1.15; /* Tighter line spacing */
             color: #FFFFFF;
             margin-bottom: 24px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.35); /* Enhanced contrast */
             position: relative;
             z-index: 1;
         }
         @media (max-width: 768px) {
             .hero-title {
                 font-size: clamp(28px, 7.2vw, 32px);
-                line-height: 1.15;
+                line-height: 1.1; /* Even tighter on mobile for less boxy feel */
                 text-align: center;
+                text-shadow: 0 3px 15px rgba(0,0,0,0.5); /* Stronger shadow for bright water highlights */
                 /* Keep entire headline white on mobile for contrast */
             }
         }
@@ -188,7 +189,7 @@
         }
         @media (max-width: 768px) {
             .hero-subtitle {
-                font-size: clamp(16px, 4.2vw, 18px);
+                font-size: clamp(16px, 4.2vw, 18px); /* Ensure 16-18px range for legibility */
                 line-height: 1.5;
                 text-align: center;
             }
@@ -236,9 +237,9 @@
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid white;
+            border: 3px solid rgba(255, 255, 255, 0.95); /* Brighter white, thicker border */
             border-radius: 12px;
-            padding: clamp(13px, 2vw, 14px) clamp(26px, 4vw, 30px);
+            padding: clamp(11px, 2vw, 12px) clamp(26px, 4vw, 30px); /* Adjusted for thicker border */
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 18px;
@@ -256,6 +257,7 @@
             background: #2284B8; /* Fill with brand blue */
             color: white;
             border-color: #2284B8;
+            transform: scale(1.02);
         }
         .btn-secondary:focus {
             outline: 3px solid rgba(255,255,255,0.8);
@@ -270,29 +272,35 @@
         .trust-badge {
             background: rgba(11,56,86,0.40); /* Navy ~40% opacity */
             border-radius: 10px; /* Rounded corners */
-            padding: 9px 12px;
+            padding: 10px 16px; /* More horizontal padding */
             margin-bottom: 12px;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px; /* Slightly more gap between stars and text */
             position: relative;
             z-index: 1;
+            white-space: nowrap; /* Keep on single line where possible */
         }
         .trust-badge .stars {
             color: #FFD166; /* Gold stars */
             font-size: 14px;
             line-height: 1;
+            padding: 0 4px; /* Extra padding around stars */
         }
         .trust-badge .text {
             color: rgba(255, 255, 255, 0.90);
             font-family: 'Outfit', sans-serif;
             font-weight: 500; /* Medium */
             font-size: clamp(14px, 2.5vw, 16px); /* 14-16px range */
+            flex-shrink: 0; /* Prevent text from shrinking too much */
         }
         @media (max-width: 768px) {
             .trust-badge {
                 justify-self: center;
                 align-self: center;
+                max-width: 90%; /* Allow wrapping if absolutely necessary */
+                white-space: normal; /* Allow wrapping on very small screens */
+                text-align: center;
             }
         }
         .trust-subtext {
@@ -536,27 +544,27 @@
             </div>
         </div>
         <div class="hero-wave">
-            <svg viewBox="0 0 1200 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#2284B8;stop-opacity:0.9" />
-                        <stop offset="100%" style="stop-color:#2284B8;stop-opacity:0.7" />
+                        <stop offset="0%" style="stop-color:#2284B8;stop-opacity:0.95" />
+                        <stop offset="100%" style="stop-color:#2284B8;stop-opacity:0.8" />
                     </linearGradient>
                     <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#5EAEDD;stop-opacity:0.8" />
-                        <stop offset="100%" style="stop-color:#5EAEDD;stop-opacity:0.6" />
+                        <stop offset="0%" style="stop-color:#5EAEDD;stop-opacity:0.85" />
+                        <stop offset="100%" style="stop-color:#5EAEDD;stop-opacity:0.7" />
                     </linearGradient>
                     <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color:#E9F5FC;stop-opacity:0.9" />
                         <stop offset="100%" style="stop-color:#E9F5FC;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <!-- Bottom layer - lightest -->
-                <path d="M0,45 C200,35 400,50 600,40 C800,30 1000,45 1200,35 L1200,100 L0,100 Z" fill="url(#waveGradient3)"/>
-                <!-- Middle layer -->
-                <path d="M0,55 C300,25 600,45 900,35 C1050,30 1150,40 1200,35 L1200,100 L0,100 Z" fill="url(#waveGradient2)"/>
-                <!-- Top layer - darkest -->
-                <path d="M0,65 C250,35 500,55 750,45 C900,40 1100,50 1200,45 L1200,100 L0,100 Z" fill="url(#waveGradient1)"/>
+                <!-- Bottom layer - lightest, most fluid -->
+                <path d="M0,50 C150,25 300,60 450,45 C600,30 750,55 900,40 C1050,25 1150,50 1200,40 L1200,120 L0,120 Z" fill="url(#waveGradient3)"/>
+                <!-- Middle layer - medium blue -->
+                <path d="M0,65 C200,40 400,70 600,55 C800,40 1000,65 1200,50 L1200,120 L0,120 Z" fill="url(#waveGradient2)"/>
+                <!-- Top layer - darkest blue, most prominent -->
+                <path d="M0,75 C300,50 600,85 900,70 C1050,60 1150,75 1200,65 L1200,120 L0,120 Z" fill="url(#waveGradient1)"/>
             </svg>
         </div>
         <img src="safestroke-images/davejohnnyfront.jpg" alt="Toddler swim lesson with instructor at SafeStroke Swim Academy, Clifton NJ" style="display: none;">
