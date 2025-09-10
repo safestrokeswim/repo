@@ -830,33 +830,84 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section class="dark-section py-24 relative z-10">
+        <!-- Enhanced About Section -->
+        <section class="py-24 relative z-10 overflow-hidden" style="background: linear-gradient(170deg, #00253D 0%, #00365C 60%, #1976a3 100%);">
+            <!-- Background decorative elements -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute top-20 left-10 w-32 h-32 rounded-full" style="background: radial-gradient(circle, #2284B8, transparent);"></div>
+                <div class="absolute bottom-20 right-10 w-48 h-48 rounded-full" style="background: radial-gradient(circle, #2284B8, transparent);"></div>
+                <div class="absolute top-1/2 left-1/4 w-24 h-24 rounded-full" style="background: radial-gradient(circle, #5EAEDD, transparent);"></div>
+            </div>
+            
+            <!-- Subtle wave graphics -->
+            <div class="absolute bottom-0 left-0 w-full h-20 opacity-10">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-full">
+                    <path d="M0,50 C300,20 600,80 900,50 C1050,35 1150,65 1200,45 L1200,120 L0,120 Z" fill="#2284B8"/>
+                </svg>
+            </div>
+            
             <div class="container mx-auto px-6 text-center relative z-10">
-                <h2 class="text-4xl font-black mb-4">About SafeStroke Swim Academy</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-lg opacity-90">At SafeStroke, we do swim lessons differently. Based in North Jersey, we help kids gain real skills and confidence — efficiently.</p>
-                <div class="mt-12 max-w-4xl mx-auto">
-                    <p class="text-2xl font-bold mb-8">Why Families Choose Us:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                        <div class="flex items-start space-x-4 bg-white/5 rounded-xl p-6 backdrop-blur-sm">
-                            <svg class="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <p><strong>Progress-focused swim programs</strong> designed to get kids swimming faster</p>
+                <h2 class="text-4xl font-black mb-6 text-white">Why Parents Trust SafeStroke Swim Academy</h2>
+                <p class="mt-4 max-w-3xl mx-auto text-xl opacity-95 text-white mb-16">We combine science-backed methods with caring, certified instructors to help kids gain real swimming skills — safely, quickly, and with confidence.</p>
+                
+                <div class="max-w-5xl mx-auto">
+                    <p class="text-2xl font-bold mb-12 text-white">Why Families Choose Us:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                        <!-- Certified Instructors Card -->
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:bg-white/15 group">
+                            <div class="flex items-start space-x-5">
+                                <div class="bg-gradient-to-br from-green-400 to-green-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl transition-shadow">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Certified Instructors</h3>
+                                    <p class="text-white/90 leading-relaxed">Certified instructors trained in child development and safety — giving parents peace of mind.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-start space-x-4 bg-white/5 rounded-xl p-6 backdrop-blur-sm">
-                             <svg class="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
-                            <p><strong>Small groups with low ratios</strong> for personalized attention</p>
+                        
+                        <!-- Small Groups Card -->
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:bg-white/15 group">
+                            <div class="flex items-start space-x-5">
+                                <div class="bg-gradient-to-br from-blue-400 to-blue-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl transition-shadow" style="background: linear-gradient(135deg, #2284B8 0%, #1976a3 100%);">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Small Groups</h3>
+                                    <p class="text-white/90 leading-relaxed">Small groups with low ratios so every child gets personal attention.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-start space-x-4 bg-white/5 rounded-xl p-6 backdrop-blur-sm">
-                            <svg class="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
-                            <p><strong>Proven lesson program</strong> structured to make your child water-safe</p>
+                        
+                        <!-- Proven Program Card -->
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:bg-white/15 group">
+                            <div class="flex items-start space-x-5">
+                                <div class="bg-gradient-to-br from-purple-400 to-purple-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl transition-shadow">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Proven Lesson Program</h3>
+                                    <p class="text-white/90 leading-relaxed">A structured lesson program that makes every child water-safe.</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-start space-x-4 bg-white/5 rounded-xl p-6 backdrop-blur-sm">
-                            <svg class="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                            <p><strong>Certified instructors</strong> trained in child development and safety</p>
+                        
+                        <!-- Progress-Focused Card -->
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-white/20 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:bg-white/15 group">
+                            <div class="flex items-start space-x-5">
+                                <div class="bg-gradient-to-br from-orange-400 to-orange-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl transition-shadow">
+                                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white mb-2">Science-Backed Progress</h3>
+                                    <p class="text-white/90 leading-relaxed">Science-backed, progress-focused programs that get kids swimming faster.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <a href="safestroke-aboutus.html" class="mt-12 inline-block border-2 border-white/80 hover:bg-white hover:text-gray-800 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">More About Our Method</a>
+                
+                <a href="safestroke-aboutus.html" class="mt-16 inline-block bg-gradient-to-r text-white font-bold py-4 px-10 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl" style="background: linear-gradient(135deg, #2284B8 0%, #1976a3 100%);">See How Our Method Works</a>
             </div>
         </section>
 
