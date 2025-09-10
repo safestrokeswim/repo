@@ -429,16 +429,137 @@
         .animate-fade-in {
             animation: fadeInUp 0.6s ease-out;
         }
-        /* Program card hover improvements */
+        /* Enhanced program card styles */
         .program-card {
             background: linear-gradient(145deg, #ffffff 0%, #fafcff 100%);
             border-radius: 1.5rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Equal height cards */
         }
         .program-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 20px 40px rgba(34, 132, 184, 0.15);
             background: linear-gradient(145deg, #ffffff 0%, #f0f7ff 100%);
+        }
+        /* Most Popular card enhancement */
+        .program-card.most-popular {
+            border: 2px solid #FFD166;
+            box-shadow: 0 12px 35px rgba(255, 209, 102, 0.25), 0 8px 24px rgba(34, 132, 184, 0.1);
+            transform: scale(1.03);
+        }
+        .program-card.most-popular:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 209, 102, 0.3), 0 15px 35px rgba(34, 132, 184, 0.2);
+        }
+        /* Age badge styles */
+        .age-badge {
+            background: linear-gradient(135deg, #E9F5FC 0%, #D1E9FF 100%);
+            color: #2284B8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        /* Pricing styles */
+        .pricing-display {
+            background: linear-gradient(135deg, #f8faff 0%, #e9f3ff 100%);
+            border: 1px solid rgba(34, 132, 184, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 16px 0;
+            text-align: center;
+        }
+        .pricing-amount {
+            color: #2284B8;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .pricing-note {
+            color: #16a34a;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        /* Trust proof styles */
+        .trust-proof {
+            background: rgba(34, 132, 184, 0.05);
+            border-left: 3px solid #2284B8;
+            padding: 8px 12px;
+            margin-top: 16px;
+            font-size: 14px;
+            color: #2284B8;
+            font-weight: 500;
+            border-radius: 0 8px 8px 0;
+        }
+        /* Enhanced most popular badge */
+        .most-popular-badge {
+            background: linear-gradient(135deg, #FFD166 0%, #F59E0B 100%);
+            color: #1F2937;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(255, 209, 102, 0.4);
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            z-index: 10;
+        }
+        /* Individual CTA button styles */
+        .program-cta {
+            background: transparent;
+            color: #2284B8;
+            border: 2px solid #2284B8;
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: auto;
+            transition: all 0.3s ease;
+        }
+        .program-cta:hover {
+            background: #2284B8;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 132, 184, 0.3);
+        }
+        /* Program description improvements */
+        .program-description {
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .program-features {
+            margin-bottom: 20px;
+        }
+        .program-features li {
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+        /* Mobile card spacing */
+        @media (max-width: 768px) {
+            .program-card {
+                margin-bottom: 24px;
+                box-shadow: 0 8px 25px rgba(34, 132, 184, 0.12);
+            }
+            .program-card.most-popular {
+                transform: none;
+                border: 2px solid #FFD166;
+                box-shadow: 0 12px 30px rgba(255, 209, 102, 0.2);
+            }
         }
         /* Reviews card style */
         .review-card {
@@ -582,70 +703,123 @@
                 </div>
                 <h2 class="text-4xl font-black mb-4">Find the Perfect Program for Your Child</h2>
                 <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-16">Small groups, big results. Every child gets the attention they deserve.</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                     <!-- Droplet -->
-                    <div class="program-card p-8 shadow-xl border border-gray-100 flex flex-col text-left group">
-                        <div class="flex-grow">
+                    <div class="program-card p-8 shadow-xl border border-gray-100 text-left group relative">
+                        <div class="mb-6">
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/droplet-shield.png" alt="Droplet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">Droplet</h3>
-                            <p class="font-semibold text-gray-600 mb-4">Ages 3-24 months (Parent & Child)</p>
-                            <p class="text-gray-700 mb-4">A gentle introduction to the water for babies and toddlers. Parents join in as little swimmers build comfort, safety awareness, and early water skills through songs, games, and guided movement.</p>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 8:1 ratio for social learning</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Water safety fundamentals</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Parent education included</li>
-                            </ul>
+                            <h3 class="text-2xl font-bold mb-3 transition-colors duration-300 group-hover:text-blue-500">Droplet</h3>
+                            <div class="age-badge">Ages 3-24 months</div>
+                            <p class="font-semibold text-gray-700 mb-2">Parent & Child Program</p>
                         </div>
-                        <div class="mt-auto pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Starting at</p>
-                            <p class="text-2xl font-bold brand-blue">$25<span class="text-sm text-gray-500">/lesson</span></p>
+                        
+                        <div class="pricing-display">
+                            <div class="pricing-amount">$25<span class="text-lg">/lesson</span></div>
+                            <div class="pricing-note">First lesson free</div>
                         </div>
+                        
+                        <div class="program-description text-gray-700">
+                            <p class="mb-3">A gentle introduction to the water for babies and toddlers. <strong>Comfort, Safety Awareness, and Early Skills</strong> are built through engaging activities.</p>
+                            <p class="mb-4">Parents join in as little swimmers explore water through songs, games, and guided movement in a supportive environment.</p>
+                        </div>
+                        
+                        <ul class="program-features text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> 8:1 ratio for social learning</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Water safety fundamentals</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Parent education included</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Sensory water exploration</li>
+                        </ul>
+                        
+                        <div class="trust-proof">
+                            💙 Trusted by 40+ families
+                        </div>
+                        
+                        <a href="safestroke-programs.html#droplet" class="program-cta mt-6">
+                            View Droplet Details
+                        </a>
                     </div>
+                    
                     <!-- Splashlet -->
-                    <div class="program-card p-8 shadow-xl border border-gray-100 flex flex-col text-left group">
-                        <div class="flex-grow">
+                    <div class="program-card p-8 shadow-xl border border-gray-100 text-left group relative">
+                        <div class="mb-6">
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/splashlet-shield.png" alt="Splashlet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">Splashlet</h3>
-                            <p class="font-semibold text-gray-600 mb-4">Ages 2-3 years</p>
-                            <p class="text-gray-700 mb-4">Perfect for toddlers ready for more independence. Instructors lead engaging lessons that build water confidence, introduce safety skills, and encourage movement through playful activities.</p>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 4:1 small group ratio</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Building independence</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Fun skill progression</li>
-                            </ul>
+                            <h3 class="text-2xl font-bold mb-3 transition-colors duration-300 group-hover:text-blue-500">Splashlet</h3>
+                            <div class="age-badge">Ages 2-3 years</div>
+                            <p class="font-semibold text-gray-700 mb-2">Independent Learning</p>
                         </div>
-                        <div class="mt-auto pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Starting at</p>
-                            <p class="text-2xl font-bold brand-blue">$35<span class="text-sm text-gray-500">/lesson</span></p>
+                        
+                        <div class="pricing-display">
+                            <div class="pricing-amount">$35<span class="text-lg">/lesson</span></div>
+                            <div class="pricing-note">First lesson free</div>
                         </div>
+                        
+                        <div class="program-description text-gray-700">
+                            <p class="mb-3">Perfect for toddlers ready for more independence. <strong>Water Confidence, Safety Skills, and Playful Movement</strong> are developed through engaging activities.</p>
+                            <p class="mb-4">Instructors lead lessons that encourage exploration and build swimming foundations in a fun, supportive atmosphere.</p>
+                        </div>
+                        
+                        <ul class="program-features text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> 4:1 small group ratio</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Building independence</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Fun skill progression</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Water safety focus</li>
+                        </ul>
+                        
+                        <div class="trust-proof">
+                            ⭐ Rated 4.9 ★ by parents
+                        </div>
+                        
+                        <a href="safestroke-programs.html#splashlet" class="program-cta mt-6">
+                            View Splashlet Details
+                        </a>
                     </div>
+                    
                     <!-- Strokelet -->
-                    <div class="program-card p-8 shadow-xl border border-gray-100 flex flex-col text-left group relative overflow-hidden">
-                        <div class="absolute top-0 right-0 bg-gradient-to-l from-yellow-400 to-orange-400 text-white text-xs font-bold px-3 py-1 rounded-bl-xl">MOST POPULAR</div>
-                        <div class="flex-grow">
+                    <div class="program-card most-popular p-8 shadow-xl border border-gray-100 text-left group relative">
+                        <div class="most-popular-badge">Most Popular</div>
+                        
+                        <div class="mb-6">
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/strokelet-shield.png" alt="Strokelet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-2 transition-colors duration-300 group-hover:text-blue-500">Strokelet</h3>
-                            <p class="font-semibold text-gray-600 mb-4">Ages 3-12 years</p>
-                            <p class="text-gray-700 mb-4">Our signature program for rapid skill development. Students master breath control, floating, and proper stroke technique in a structured, supportive environment.</p>
-                            <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 3:1 max ratio</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> 12-lesson progression</li>
-                                <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> Swimming guaranteed*</li>
-                            </ul>
+                            <h3 class="text-2xl font-bold mb-3 transition-colors duration-300 group-hover:text-blue-500">Strokelet</h3>
+                            <div class="age-badge">Ages 3-12 years</div>
+                            <p class="font-semibold text-gray-700 mb-2">Signature Swimming Program</p>
                         </div>
-                        <div class="mt-auto pt-4 border-t border-gray-200">
-                            <p class="text-sm text-gray-500">Starting at</p>
-                            <p class="text-2xl font-bold brand-blue">$40<span class="text-sm text-gray-500">/lesson</span></p>
+                        
+                        <div class="pricing-display">
+                            <div class="pricing-amount">$40<span class="text-lg">/lesson</span></div>
+                            <div class="pricing-note">First lesson free</div>
                         </div>
+                        
+                        <div class="program-description text-gray-700">
+                            <p class="mb-3">Our signature program for rapid skill development. <strong>Breath Control, Floating, and Proper Stroke Technique</strong> are mastered through structured progression.</p>
+                            <p class="mb-4">Students develop swimming competency in a supportive environment with personalized instruction and proven methods.</p>
+                        </div>
+                        
+                        <ul class="program-features text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> 3:1 max ratio</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> 12-lesson progression</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Swimming guaranteed*</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Stroke technique mastery</li>
+                        </ul>
+                        
+                        <div class="trust-proof">
+                            🏆 Most enrolled program
+                        </div>
+                        
+                        <a href="safestroke-programs.html#strokelet" class="program-cta mt-6">
+                            View Strokelet Details
+                        </a>
                     </div>
                 </div>
-                <a href="safestroke-programs.html" class="mt-16 inline-block brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">See All Program Details</a>
+                
+                <a href="safestroke-programs.html" class="mt-16 inline-block brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-10 rounded-full text-lg transition duration-300 transform hover:scale-105">Compare All Programs</a>
             </div>
         </section>
 
