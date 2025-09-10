@@ -78,6 +78,10 @@
             background: radial-gradient(circle, rgba(34, 132, 184, 0.08) 0%, transparent 70%);
             animation: float 20s ease-in-out infinite;
         }
+        .top-bar {
+            background: linear-gradient(135deg, #00253D 0%, #00365C 50%, #00253D 100%);
+            color: white;
+        }
         @keyframes float {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             33% { transform: translate(30px, -30px) rotate(120deg); }
@@ -198,7 +202,7 @@
 <body class="gradient-bg">
 
     <!-- Top Bar -->
-    <div class="dark-section text-white text-center py-2.5 text-sm font-medium tracking-wider relative z-10">
+    <div class="top-bar text-white text-center py-2.5 text-sm font-medium tracking-wider relative z-10">
         199 Scoles Ave, Clifton NJ | <a href="tel:973-820-1153" class="font-bold hover:text-blue-300 transition-colors">Call or Text 973-820-1153</a>
     </div>
 
