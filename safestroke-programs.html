@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Swim Programs | SafeStroke Swim Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '642654784918679');
+    fbq('track', 'PageView');
+    
+    // Track programs page view
+    fbq('track', 'ViewContent', {
+        content_name: 'Programs Page',
+        content_category: 'Programs'
+    });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=642654784918679&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <style>
+        body { font-family: 'Outfit', sans-serif; color: #00253D; }
+        .dark-section { 
+            background-color: #00253D; 
+            color: white;
+            background-image: radial-gradient(circle at top left, rgba(34, 132, 184, 0.1) 0%, transparent 30%);
+        }
+        .brand-blue { color: #2284B8; }
+        .brand-blue-bg { background-color: #2284B8; }
+        .nav-link { transition: color 0.3s; position: relative; }
+        .nav-link.active { font-weight: 700; color: #2284B8; }
+        .nav-link:not(.active):hover { color: #2284B8; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #2284B8;
+            transition: width 0.3s ease-in-out;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Top Bar -->
+    <div class="dark-section text-white text-center py-2 text-sm font-medium tracking-wider">
+        199 Scoles Ave, Clifton NJ | <a href="tel:973-820-1153" class="font-bold hover:underline">Call or Text 973-820-1153</a>
+    </div>
+
+    <!-- Header -->
+    <nav class="bg-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Logo (Left) -->
+            <div class="flex-shrink-0 md:flex-grow-0">
+                <a href="index.html" class="flex items-center">
+                    <img src="safestroke-images/safestroke_logo.png" alt="SafeStroke Logo" class="h-10 w-auto">
+                </a>
+            </div>
+
+            <!-- Centered Navigation Links for Desktop -->
+            <div class="hidden md:flex flex-grow justify-center items-center space-x-8 font-semibold">
+                <a href="index.html" class="nav-link">Main</a>
+                <a href="safestroke-programs.html" class="nav-link active">Programs</a>
+                <a href="safestroke-pricing.html" class="nav-link">Pricing</a>
+                <a href="safestroke-aboutus.html" class="nav-link">About Us</a>
+                <a href="safestroke-reviews.html" class="nav-link">Reviews</a>
+                <a href="safestroke-location.html" class="nav-link">Our Location</a>
+            </div>
+            
+            <!-- Book Now Button (Right, Desktop) -->
+            <div class="hidden md:flex flex-shrink-0">
+                <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-full text-md transition duration-300 transform hover:scale-105 shadow-sm">Book Now</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white px-6 pb-4 border-t border-gray-100">
+            <a href="index.html" class="block py-2 text-gray-800">Main</a>
+            <a href="safestroke-programs.html" class="block py-2 text-gray-800 font-semibold">Programs</a>
+            <a href="safestroke-pricing.html" class="block py-2 text-gray-800">Pricing</a>
+            <a href="safestroke-aboutus.html" class="block py-2 text-gray-800">About Us</a>
+            <a href="safestroke-reviews.html" class="block py-2 text-gray-800">Reviews</a>
+            <a href="safestroke-location.html" class="block py-2 text-gray-800">Our Location</a>
+            <div class="mt-4 pt-4 border-t">
+                 <a href="safestroke-booking.html" class="block w-full text-center brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-300">Book Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Top Banner Section -->
+        <section class="dark-section py-20">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <h1 class="text-5xl md:text-6xl font-black">Programs & Curriculum</h1>
+                        <p class="mt-4 text-lg max-w-xl opacity-90">Our swim classes at SafeStroke Swim Academy focus on steady, skill-driven progress — blending personalized instruction with small group dynamics to help each swimmer grow in confidence, safety, and technique week after week.</p>
+                    </div>
+                    <div class="md:w-1/2">
+                        <img src="safestroke-images/suhkickboardfront.jpg" alt="Instructor teaching a child in the pool" class="rounded-xl shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strokelets Section -->
+        <section class="py-24 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <img src="safestroke-images/safestroke_logo.png" alt="SafeStroke Logo" class="h-16 w-auto mx-auto mb-4">
+                <h2 class="text-4xl font-black mb-2">Strokelets</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-16">Ages 3-12 years</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Bubble Buddies -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col text-left">
+                        <div class="mb-4">
+                            <img src="safestroke-images/strokelet-shield.png" alt="Strokelet Shield" class="w-16 h-16">
+                        </div>
+                        <img src="safestroke-images/johnnydaveback.png" alt="Young swimmer practicing" class="rounded-lg mb-6 h-48 w-full object-cover">
+                        <h3 class="text-2xl font-bold mb-2">Bubble Buddies (Level 1)</h3>
+                        <p class="font-semibold text-gray-500 mb-4">3:1 Swimmer to Instructor</p>
+                        <p class="text-gray-700 mb-6 flex-grow">An introduction to water safety and comfort for beginners. Kids learn breath control, supported floats, and basic water skills in a fun, supportive setting—building confidence for independent swimming.</p>
+                        <div class="mt-auto">
+                            <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-md transition duration-300 transform hover:scale-105 shadow-lg inline-block">Book Lessons</a>
+                        </div>
+                    </div>
+                    <!-- Stroke Starters -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col text-left">
+                        <div class="mb-4">
+                            <img src="safestroke-images/strokelet-shield.png" alt="Strokelet Shield" class="w-16 h-16">
+                        </div>
+                         <img src="safestroke-images/matt&laracuente.jpg" alt="Child swimming independently" class="rounded-lg mb-6 h-48 w-full object-cover">
+                        <h3 class="text-2xl font-bold mb-2">Stroke Starters (Level 2)</h3>
+                        <p class="font-semibold text-gray-500 mb-4">3:1 Swimmer to Instructor</p>
+                        <p class="text-gray-700 mb-6 flex-grow">Designed for kids ready to build independence through skills. Focuses on safe pool entry, breath control, floating, kicking, and intro to doggy paddle and freestyle — progressing towards a safe, independent swimmer.</p>
+                         <div class="mt-auto">
+                            <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-md transition duration-300 transform hover:scale-105 shadow-lg inline-block">Book Lessons</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Water Acclimation Section -->
+        <section class="py-24 bg-gray-50 border-t border-gray-100">
+            <div class="container mx-auto px-6 text-center">
+                <div class="inline-block bg-blue-100 text-blue-800 text-sm font-bold px-4 py-2 rounded-full mb-4">
+                    For Children Under 3 years
+                </div>
+                <h2 class="text-4xl font-black mb-16">Water Acclimation Classes</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Droplet -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col text-left">
+                        <div class="mb-4">
+                            <img src="safestroke-images/droplet-shield.png" alt="Droplet Shield" class="w-16 h-16">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Droplet</h3>
+                        <p class="font-semibold text-gray-500 mb-6">Ages 3-24 months (Parent & Child) | 8:1 Ratio</p>
+                        <div class="space-y-4 text-gray-700 flex-grow">
+                            <p class="flex items-start"><svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span><strong>Safety Skills:</strong> Safe submersion (when ready), holding the wall, assisted entries/exits.</span></p>
+                            <p class="flex items-start"><svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span><strong>Foundations:</strong> Supported floating/kicking, blowing bubbles, face in water.</span></p>
+                            <p class="flex items-start"><svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span><strong>Goals:</strong> Build water comfort & trust, teach parents safe handling.</span></p>
+                        </div>
+                         <div class="mt-auto pt-6">
+                            <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-md transition duration-300 transform hover:scale-105 shadow-lg inline-block">Book Lessons</a>
+                        </div>
+                    </div>
+                    <!-- Splashlet -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100 flex flex-col text-left">
+                        <div class="mb-4">
+                            <img src="safestroke-images/splashlet-shield.png" alt="Splashlet Shield" class="w-16 h-16">
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">Splashlet</h3>
+                        <p class="font-semibold text-gray-500 mb-6">Ages 2-3 years | 4:1 Ratio</p>
+                        <div class="space-y-4 text-gray-700 flex-grow">
+                            <p class="flex items-start"><svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span><strong>Safety Skills:</strong> Submersion & breath control, short propulsion to safety.</span></p>
+                            <p class="flex items-start"><svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span><strong>Skill Foundations:</strong> Supported back/front floats, guided movement.</span></p>
+                            <p class="flex items-start"><svg class="w-5 h-5 text-blue-500 mr-3 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span><strong>Goals:</strong> Foster water comfort, build instructor trust, foundational for independence.</span></p>
+                        </div>
+                         <div class="mt-auto pt-6">
+                            <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-md transition duration-300 transform hover:scale-105 shadow-lg inline-block">Book Lessons</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CTA Section -->
+        <section class="dark-section py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-black">Ready to Get Started?</h2>
+                <p class="text-2xl font-bold brand-blue my-2">Learn Fast. Swim Safe.</p>
+                <p class="mt-4 max-w-2xl mx-auto opacity-90">Give your child the confidence, safety skills, and progress they deserve — with personalized swim lessons that actually work.</p>
+                <a href="safestroke-booking.html" class="mt-8 inline-block brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-12 rounded-full text-xl transition duration-300 transform hover:scale-105 shadow-lg">Book a Free Lesson Today</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="dark-section pt-16 pb-8">
+        <div class="container mx-auto px-6 text-center text-white">
+            <a href="index.html">
+                <img src="safestroke-images/safestroke_logo.png" alt="SafeStroke Logo" class="h-12 w-auto mx-auto mb-6 opacity-90">
+            </a>
+            <div class="flex justify-center space-x-6 md:space-x-8 my-8 font-semibold">
+                <a href="index.html" class="hover:text-blue-300 transition">Main</a>
+                <a href="safestroke-programs.html" class="hover:text-blue-300 transition">Programs</a>
+                <a href="safestroke-pricing.html" class="hover:text-blue-300 transition">Pricing</a>
+                <a href="safestroke-aboutus.html" class="hover:text-blue-300 transition">About Us</a>
+                <a href="safestroke-reviews.html" class="hover:text-blue-300 transition">Reviews</a>
+                <a href="safestroke-location.html" class="hover:text-blue-300 transition">Location</a>
+            </div>
+            <p class="text-sm opacity-70">&copy; 2025 SafeStroke Swim Academy. All Rights Reserved.</p>
+            <p class="text-sm opacity-70 mt-2">199 Scoles Avenue, Clifton, NJ 07012</p>
+        </div>
+    </footer>
+    
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
+
