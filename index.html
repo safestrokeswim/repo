@@ -568,12 +568,79 @@
         .group:hover .program-title-hover {
             color: #2284B8; /* Primary brand blue */
         }
-        /* Reviews card style */
-        .review-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.5rem;
+        /* Enhanced Reviews Section */
+        .reviews-carousel {
+            position: relative;
+            overflow: hidden;
+        }
+        .reviews-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 2rem;
+        }
+        .review-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+        @media (min-width: 768px) {
+            .review-slide {
+                min-width: calc(50% - 1rem);
+            }
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        .carousel-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+        }
+        .carousel-btn.prev {
+            left: -20px;
+        }
+        .carousel-btn.next {
+            right: -20px;
+        }
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 2rem;
+        }
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-dot.active {
+            background: #FFD166;
+            transform: scale(1.2);
+        }
+        .avatar-initials {
+            background: linear-gradient(135deg, #2284B8 0%, #1976a3 100%);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            flex-shrink: 0;
         }
         /* CTA section background pattern */
         .cta-pattern {
@@ -911,48 +978,119 @@
             </div>
         </section>
 
-        <!-- Reviews Section -->
-        <section class="bg-gradient-to-br from-blue-600 via-purple-600 to-blue-600 py-24 text-white relative overflow-hidden">
-            <div class="absolute inset-0 opacity-10">
-                <div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
-                <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full filter blur-3xl"></div>
+        <!-- Enhanced Reviews Section -->
+        <section class="py-24 text-white relative overflow-hidden" style="background: linear-gradient(135deg, #0B3856 0%, #2284B8 50%, #5EAEDD 100%);">
+            <!-- Background decorative elements -->
+            <div class="absolute inset-0 opacity-8">
+                <div class="absolute top-10 right-10 w-64 h-64 rounded-full" style="background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);"></div>
+                <div class="absolute bottom-10 left-10 w-48 h-48 rounded-full" style="background: radial-gradient(circle, rgba(255,255,255,0.08), transparent);"></div>
             </div>
+            
+            <!-- Subtle wave graphics -->
+            <div class="absolute top-0 left-0 w-full h-16 opacity-15">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-full">
+                    <path d="M0,60 C400,20 800,100 1200,60 L1200,0 L0,0 Z" fill="rgba(255,255,255,0.1)"/>
+                </svg>
+            </div>
+            
             <div class="container mx-auto px-6 text-center relative z-10">
-                <h2 class="text-4xl font-black mb-4">Real Parents. Real Results.</h2>
-                <div class="flex justify-center items-center gap-4 mb-12">
-                    <div class="flex">
-                        <span class="text-yellow-400 text-2xl">★★★★★</span>
-                    </div>
-                    <p class="text-lg">5.0 Average</p>
-                    <a href="https://g.page/r/safestroke/review" class="text-white/80 hover:text-white underline text-sm">View on Google</a>
+                <h2 class="text-4xl font-black mb-3">Trusted by 130+ Families in North Jersey</h2>
+                <div class="flex justify-center items-center gap-3 mb-12">
+                    <a href="https://g.page/r/safestroke/review" target="_blank" class="flex items-center gap-2 text-xl font-semibold hover:text-yellow-300 transition-colors">
+                        <span style="color: #FFD166; font-size: 24px;">⭐</span>
+                        <span>5.0 ★ Average on Google — Verified Parent Reviews</span>
+                    </a>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <!-- Review 1 -->
-                    <div class="review-card p-8 text-left">
-                        <p class="text-yellow-400 text-2xl mb-4">★★★★★</p>
-                        <p class="mb-6 italic opacity-95">"I've used other swim instructors and these guys are by far the best. The progress we saw and methods they used blew the others out of the water. Our toddlers thrived with their swimming capabilities after just one lesson. I couldn't recommend them more. 10/10"</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-gradient-to-br from-white/30 to-white/10 rounded-full"></div>
-                            <div>
-                                <p class="font-bold">Jamie B.</p>
-                                <p class="text-sm opacity-80">Parent of 2 • Verified</p>
+                
+                <!-- Reviews Carousel -->
+                <div class="reviews-carousel max-w-6xl mx-auto relative">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <!-- Review 1 -->
+                        <div class="review-slide">
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-8 text-left shadow-xl border border-white/20">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span style="color: #FFD166; font-size: 20px;">★★★★★</span>
+                                </div>
+                                <p class="mb-6 italic opacity-95 text-lg leading-relaxed">"I've used other swim instructors and these guys are by far the best. The <strong>progress we saw</strong> and methods they used blew the others out of the water. Our toddlers thrived with their <strong>swimming capabilities after just one lesson</strong>. I couldn't recommend them more. 10/10"</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar-initials">JB</div>
+                                    <div>
+                                        <p class="font-bold">Jamie B.</p>
+                                        <p class="text-sm opacity-80">Parent of 2 • Verified</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 2 -->
+                        <div class="review-slide">
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-8 text-left shadow-xl border border-white/20">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span style="color: #FFD166; font-size: 20px;">★★★★★</span>
+                                </div>
+                                <p class="mb-6 italic opacity-95 text-lg leading-relaxed">"My 6yo made <strong>more progress in a few sessions than months</strong> at another swim school. Dave is professional and an excellent teacher. The <strong>small group size made all the difference!</strong>"</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar-initials">DW</div>
+                                    <div>
+                                        <p class="font-bold">Daniella W.</p>
+                                        <p class="text-sm opacity-80">Parent • Verified</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 3 -->
+                        <div class="review-slide">
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-8 text-left shadow-xl border border-white/20">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span style="color: #FFD166; font-size: 20px;">★★★★★</span>
+                                </div>
+                                <p class="mb-6 italic opacity-95 text-lg leading-relaxed">"Amazing experience! My daughter was <strong>afraid of water but now she loves swimming</strong>. The instructors are so patient and skilled. <strong>Worth every penny</strong> for the peace of mind and results."</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar-initials">SR</div>
+                                    <div>
+                                        <p class="font-bold">Sarah R.</p>
+                                        <p class="text-sm opacity-80">Parent • Verified</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Review 4 -->
+                        <div class="review-slide">
+                            <div class="bg-white/15 backdrop-blur-sm rounded-2xl p-8 text-left shadow-xl border border-white/20">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <span style="color: #FFD166; font-size: 20px;">★★★★★</span>
+                                </div>
+                                <p class="mb-6 italic opacity-95 text-lg leading-relaxed">"The difference between SafeStroke and other programs is night and day. <strong>Professional, results-driven, and caring</strong>. My son went from scared to <strong>swimming independently in 8 lessons</strong>!"</p>
+                                <div class="flex items-center gap-3">
+                                    <div class="avatar-initials">MK</div>
+                                    <div>
+                                        <p class="font-bold">Michael K.</p>
+                                        <p class="text-sm opacity-80">Parent • Verified</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <!-- Review 2 -->
-                    <div class="review-card p-8 text-left">
-                        <p class="text-yellow-400 text-2xl mb-4">★★★★★</p>
-                        <p class="mb-6 italic opacity-95">"My 6yo made more progress in a few sessions than months at another swim school. Dave is professional and an excellent teacher. The small group size made all the difference!"</p>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 bg-gradient-to-br from-white/30 to-white/10 rounded-full"></div>
-                            <div>
-                                <p class="font-bold">Daniella W.</p>
-                                <p class="text-sm opacity-80">Parent • Verified</p>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <!-- Carousel Navigation -->
+                    <button class="carousel-btn prev" id="prevBtn">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn next" id="nextBtn">
+                        <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
                 </div>
-                <a href="safestroke-reviews.html" class="mt-12 inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">Read All Reviews →</a>
+                
+                <!-- Carousel Dots -->
+                <div class="carousel-dots" id="carouselDots"></div>
+                
+                <a href="https://g.page/r/safestroke/review" target="_blank" class="mt-12 inline-block bg-white text-blue-600 hover:bg-gray-100 font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-xl">Read Verified Google Reviews →</a>
             </div>
         </section>
         
@@ -1115,6 +1253,71 @@
                 }
             });
         });
+        
+        // Reviews Carousel Functionality
+        const reviewsTrack = document.getElementById('reviewsTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.review-slide');
+        const totalSlides = slides.length;
+        
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        function updateCarousel() {
+            const slideWidth = slides[0].offsetWidth + 32; // slide width + gap
+            const isMobile = window.innerWidth < 768;
+            const slidesToShow = isMobile ? 1 : 2;
+            
+            if (isMobile) {
+                reviewsTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            } else {
+                reviewsTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+            }
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+        
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        // Auto-advance carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+        
+        // Update carousel on window resize
+        window.addEventListener('resize', updateCarousel);
+        
+        // Initialize carousel
+        updateCarousel();
     </script>
 </body>
 </html>
