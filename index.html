@@ -41,13 +41,13 @@
             color: #00253D;
         }
         /* Add padding bottom on mobile for sticky button */
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             body { padding-bottom: 80px; }
         }
         .hero-bg { 
             background-image: url('safestroke-images/davejohnnyfront.jpg'); 
             background-size: cover; 
-            background-position: center;
+            background-position: center left;
             position: relative;
             border-radius: 0 0 2rem 2rem;
             overflow: hidden;
@@ -66,8 +66,9 @@
             pointer-events: none;
             z-index: 1;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .hero-bg {
+                background-position: 75% center; /* shift right on mobile to show faces */
                 padding-bottom: 96px; /* space for sticky CTA */
             }
         }
@@ -94,16 +95,16 @@
             justify-content: flex-start;
             padding: clamp(32px, 8vh, 120px) clamp(16px, 4vw, 40px) clamp(32px, 6vh, 80px);
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .hero-container {
-                justify-content: center;
+                justify-content: flex-start; /* left align on mobile to match panel */
                 align-items: flex-start;
-                padding: clamp(40px, 12vh, 100px) 16px clamp(40px, 8vh, 80px);
+                padding: clamp(50px, 12vh, 100px) 16px clamp(40px, 8vh, 80px); /* more top padding */
             }
         }
         .hero-content-panel {
-            background: rgba(11,56,86,0.24);
-            backdrop-filter: blur(8px);
+            background: rgba(11,56,86,0.22);
+            backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: clamp(24px, 4vw, 32px);
             max-width: min(92vw, 640px);
@@ -111,9 +112,15 @@
             position: relative;
             overflow: hidden;
         }
-        @media (min-width: 768px) {
+        @media (min-width: 769px) {
             .hero-content-panel {
                 max-width: min(60vw, 640px);
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-content-panel {
+                max-width: 85%; /* narrower on mobile */
+                margin-right: auto; /* anchor left */
             }
         }
         .hero-title {
@@ -127,7 +134,7 @@
             position: relative;
             z-index: 1;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .hero-title {
                 font-size: clamp(24px, 7.2vw, 32px);
                 line-height: 1.15;
@@ -136,6 +143,12 @@
         }
         .hero-title .accent {
             color: #2284B8;
+        }
+        @media (max-width: 768px) {
+            .hero-title .accent {
+                color: #FFFFFF;
+                text-shadow: 0 2px 8px rgba(0,0,0,0.4); /* extra shadow for mobile contrast */
+            }
         }
         .hero-subtitle {
             font-family: 'Outfit', sans-serif;
@@ -147,7 +160,7 @@
             position: relative;
             z-index: 1;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .hero-subtitle {
                 font-size: clamp(15px, 4.2vw, 18px);
                 line-height: 1.5;
@@ -161,7 +174,7 @@
             position: relative;
             z-index: 1;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .hero-buttons {
                 flex-direction: column;
                 gap: 12px;
@@ -182,7 +195,7 @@
             min-height: 54px;
             transition: all 0.3s ease;
             border: none;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* stronger shadow */
             position: relative;
             z-index: 1;
         }
@@ -196,8 +209,8 @@
         }
         .btn-secondary {
             background: transparent;
-            color: rgba(255,255,255,0.95);
-            border: 2px solid rgba(255,255,255,0.9);
+            color: white;
+            border: 2px solid white;
             border-radius: 12px;
             padding: clamp(12px, 2vw, 14px) clamp(26px, 4vw, 30px);
             font-family: 'Outfit', sans-serif;
@@ -209,7 +222,7 @@
             justify-content: center;
             min-height: 54px;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3); /* stronger shadow to match primary */
             position: relative;
             z-index: 1;
         }
@@ -222,7 +235,7 @@
             outline: 3px solid rgba(255,255,255,0.8);
             outline-offset: 2px;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .btn-primary, .btn-secondary {
                 width: 100%;
                 min-height: 48px;
@@ -250,7 +263,7 @@
             font-weight: 500;
             font-size: clamp(14px, 2.5vw, 16px);
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .trust-badge {
                 justify-self: center;
                 align-self: center;
@@ -265,7 +278,7 @@
             z-index: 1;
             line-height: 1.4;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 768px) {
             .trust-subtext {
                 text-align: center;
             }
