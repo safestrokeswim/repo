@@ -8,7 +8,7 @@ REM Commit with detailed message
 git commit -m "Hero Section Mobile-First Refinement - Premium Trust Building
 
 🎯 Major Improvements:
-- Mobile: New cropped hero image (davejohnnyback - mobile.jpg) for optimal child visibility
+- Mobile: New cropped hero image (johnnydaveback - mobile.jpg) for optimal child visibility
 - Desktop/Tablet: Maintains existing wide swim photo for emotional trust
 - Premium frosted glass panel with refined opacity and positioning
 
