@@ -59,8 +59,61 @@ Once deployed, your website will be able to:
 - Allow customers to book classes with their codes
 - Store everything in your Supabase database
 
+## Visual Editor (Stackbit) Setup
+
+### What's Already Configured
+Your website is fully set up with Netlify's Visual Editor (Stackbit) for click-to-edit content:
+
+- ✅ Stackbit configuration (`stackbit.config.ts`)
+- ✅ Content JSON files in `/content/` directory
+- ✅ HTML annotations with `data-sb-*` attributes
+- ✅ Client-side content hydration script
+- ✅ NPM dependencies and scripts
+
+### How to Use Visual Editor
+
+#### Local Development
+```bash
+# Install dependencies
+npm install
+
+# Start local development server
+npm run dev
+# Site will be available at http://localhost:5173
+
+# In another terminal, start Visual Editor
+npm run sb:dev
+# Follow the URL provided to open Visual Editor
+```
+
+#### Production Editing
+1. Go to your Netlify site dashboard
+2. Navigate to **Visual Editor** tab
+3. Click elements on your site to edit them
+4. Click **Publish** to commit changes to GitHub
+5. Netlify will automatically deploy the updates
+
+#### Editable Content
+- **Navigation menu** (links and labels)
+- **Hero section** (headline, subtext, buttons)
+- **Trust badges** (reviews count, testimonials)
+- **Reviews section** (individual reviews, ratings)
+- **Contact information** (phone, address)
+- **Call-to-action buttons** (text and links)
+
+#### Adding New Editable Content
+1. Add new fields to `stackbit.config.ts` models
+2. Update corresponding JSON files in `/content/`
+3. Add `data-sb-field-path` attributes to HTML elements
+4. Content will automatically sync via the hydration script
+
+### Content Structure
+- `content/site.json` - Global site content (nav, contact info)
+- `content/home.json` - Homepage-specific content (hero, reviews)
+
 ## Need Help?
 If you get stuck, check:
 1. Netlify Functions logs (in Netlify dashboard > Functions)
 2. Supabase logs (in Supabase dashboard > Logs)
 3. Browser console for frontend errors
+4. Stackbit Visual Editor documentation: https://docs.stackbit.com

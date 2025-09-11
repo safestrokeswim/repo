@@ -3,13 +3,22 @@
   "version": "1.0.0",
   "description": "SafeStroke booking system",
   "scripts": {
-    "build": "echo Building..."
+    "build": "echo Building...",
+    "dev": "http-server . -p 5173 -c-1",
+    "sb:dev": "stackbit dev",
+    "sb:types": "stackbit generate-types"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.5",
     "@supabase/supabase-js": "^2.39.0",
     "node-fetch": "^3.3.2",
     "stripe": "^14.0.0"
+  },
+  "devDependencies": {
+    "@stackbit/cli": "^1.0.0",
+    "@stackbit/types": "^1.0.0",
+    "@stackbit/cms-git": "^1.0.0",
+    "http-server": "^14.1.1"
   },
   "engines": {
     "node": ">=14.0.0"

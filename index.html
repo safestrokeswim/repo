@@ -1170,8 +1170,8 @@
 <body class="gradient-bg">
 
     <!-- Top Bar -->
-    <div class="top-bar text-white text-center py-2.5 text-sm font-medium tracking-wider relative z-10">
-        199 Scoles Ave, Clifton NJ | <a href="tel:973-820-1153" class="font-bold hover:text-blue-300 transition-colors">Call or Text 973-820-1153</a>
+    <div class="top-bar text-white text-center py-2.5 text-sm font-medium tracking-wider relative z-10" data-sb-object-id="content/site.json">
+        <span data-sb-field-path="address">199 Scoles Ave, Clifton NJ</span> | <a href="tel:973-820-1153" class="font-bold hover:text-blue-300 transition-colors" data-sb-field-path="phone">Call or Text 973-820-1153</a>
     </div>
 
     <!-- Header -->
@@ -1185,18 +1185,20 @@
             </div>
 
             <!-- Centered Navigation Links for Desktop -->
-            <div class="hidden md:flex flex-grow justify-center items-center space-x-8 font-semibold">
-                <a href="index.html" class="nav-link active">Main</a>
-                <a href="safestroke-programs.html" class="nav-link">Programs</a>
-                <a href="safestroke-pricing.html" class="nav-link">Pricing</a>
-                <a href="safestroke-aboutus.html" class="nav-link">About Us</a>
-                <a href="safestroke-reviews.html" class="nav-link">Reviews</a>
-                <a href="safestroke-location.html" class="nav-link">Our Location</a>
+            <div class="hidden md:flex flex-grow justify-center items-center space-x-8 font-semibold" data-sb-object-id="content/site.json">
+                <div data-sb-field-path="navItems">
+                    <a href="index.html" class="nav-link active" data-sb-field-path=".0"><span data-sb-field-path=".0.label">Main</span></a>
+                    <a href="safestroke-programs.html" class="nav-link" data-sb-field-path=".1"><span data-sb-field-path=".1.label">Programs</span></a>
+                    <a href="safestroke-pricing.html" class="nav-link" data-sb-field-path=".2"><span data-sb-field-path=".2.label">Pricing</span></a>
+                    <a href="safestroke-aboutus.html" class="nav-link" data-sb-field-path=".3"><span data-sb-field-path=".3.label">About Us</span></a>
+                    <a href="safestroke-reviews.html" class="nav-link" data-sb-field-path=".4"><span data-sb-field-path=".4.label">Reviews</span></a>
+                    <a href="safestroke-location.html" class="nav-link" data-sb-field-path=".5"><span data-sb-field-path=".5.label">Our Location</span></a>
+                </div>
             </div>
             
             <!-- Book Now Button (Right, Desktop) -->
-            <div class="hidden md:flex flex-shrink-0">
-                <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-2.5 px-7 rounded-full text-md transition duration-300 transform hover:scale-105">Book Now</a>
+            <div class="hidden md:flex flex-shrink-0" data-sb-object-id="content/site.json">
+                <a href="safestroke-booking.html" class="brand-blue-bg hover:bg-blue-600 text-white font-bold py-2.5 px-7 rounded-full text-md transition duration-300 transform hover:scale-105" data-sb-field-path="ctaLabel">Book Now</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -1208,37 +1210,39 @@
         </div>
         
         <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white px-6 pb-4 border-t border-gray-100 rounded-b-2xl">
-            <a href="index.html" class="block py-2 text-gray-800 font-semibold">Main</a>
-            <a href="safestroke-programs.html" class="block py-2 text-gray-800">Programs</a>
-            <a href="safestroke-pricing.html" class="block py-2 text-gray-800">Pricing</a>
-            <a href="safestroke-aboutus.html" class="block py-2 text-gray-800">About Us</a>
-            <a href="safestroke-reviews.html" class="block py-2 text-gray-800">Reviews</a>
-            <a href="safestroke-location.html" class="block py-2 text-gray-800">Our Location</a>
+        <div id="mobile-menu" class="md:hidden hidden bg-white px-6 pb-4 border-t border-gray-100 rounded-b-2xl" data-sb-object-id="content/site.json">
+            <div data-sb-field-path="navItems">
+                <a href="index.html" class="block py-2 text-gray-800 font-semibold" data-sb-field-path=".0"><span data-sb-field-path=".0.label">Main</span></a>
+                <a href="safestroke-programs.html" class="block py-2 text-gray-800" data-sb-field-path=".1"><span data-sb-field-path=".1.label">Programs</span></a>
+                <a href="safestroke-pricing.html" class="block py-2 text-gray-800" data-sb-field-path=".2"><span data-sb-field-path=".2.label">Pricing</span></a>
+                <a href="safestroke-aboutus.html" class="block py-2 text-gray-800" data-sb-field-path=".3"><span data-sb-field-path=".3.label">About Us</span></a>
+                <a href="safestroke-reviews.html" class="block py-2 text-gray-800" data-sb-field-path=".4"><span data-sb-field-path=".4.label">Reviews</span></a>
+                <a href="safestroke-location.html" class="block py-2 text-gray-800" data-sb-field-path=".5"><span data-sb-field-path=".5.label">Our Location</span></a>
+            </div>
             <div class="mt-4 pt-4 border-t">
-                 <a href="safestroke-booking.html" class="block w-full text-center brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-300">Book Now</a>
+                 <a href="safestroke-booking.html" class="block w-full text-center brand-blue-bg hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full text-md transition duration-300" data-sb-field-path="ctaLabel">Book Now</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg text-white">
+    <header class="hero-bg text-white" data-sb-object-id="content/home.json">
         <div class="container mx-auto hero-container">
             <div class="hero-content">
-                <div class="hero-tagline">Where Safety Meets Progress</div>
-                <h1 class="hero-title">North Jersey's Specialized Swim Academy for <span class="accent">Toddlers & Kids</span></h1>
-                <p class="hero-subtitle">From <span class="highlight">bubbles to back floats</span> to swimming across the pool — we teach kids the <span class="highlight">fundamentals</span> that build capability, confidence, and <span class="highlight">true water safety</span>.</p>
+                <div class="hero-tagline" data-sb-field-path="heroTagline">Where Safety Meets Progress</div>
+                <h1 class="hero-title" data-sb-field-path="heroHeadline">North Jersey's Specialized Swim Academy for <span class="accent">Toddlers & Kids</span></h1>
+                <p class="hero-subtitle" data-sb-field-path="heroSubhead">From <span class="highlight">bubbles to back floats</span> to swimming across the pool — we teach kids the <span class="highlight">fundamentals</span> that build capability, confidence, and <span class="highlight">true water safety</span>.</p>
                 
                 <div class="hero-buttons">
-                    <a href="safestroke-booking.html" class="btn-primary" aria-label="Book a free swim lesson with SafeStroke Swim Academy">Book Free Lesson</a>
-                    <a href="safestroke-programs.html" class="btn-secondary" aria-label="View SafeStroke swim programs and classes">See Programs</a>
+                    <a href="safestroke-booking.html" class="btn-primary" aria-label="Book a free swim lesson with SafeStroke Swim Academy" data-sb-field-path="heroCtaPrimary">Book Free Lesson</a>
+                    <a href="safestroke-programs.html" class="btn-secondary" aria-label="View SafeStroke swim programs and classes" data-sb-field-path="heroCtagecondary">See Programs</a>
                 </div>
                 
                 <div class="trust-badge">
                     <span class="stars">⭐⭐⭐⭐⭐</span>
-                    <span class="text">Trusted by 134+ North Jersey families</span>
+                    <span class="text" data-sb-field-path="trustBadgeText">Trusted by 134+ North Jersey families</span>
                 </div>
-                <div class="trust-subtext">
+                <div class="trust-subtext" data-sb-field-path="trustSubtext">
                     First lesson free — no card required
                 </div>
             </div>
@@ -1501,7 +1505,7 @@
             </div>
         </section>
         <!-- Enhanced Reviews Section with proper spacing from wave -->
-        <section id="reviews" class="relative overflow-visible text-white reviews-section" style="background: linear-gradient(135deg, #1976a3 0%, #2284B8 40%, #5EAEDD 100%); padding-top: 4.5rem; padding-bottom: 6rem;" role="region" aria-label="Parent reviews">
+        <section id="reviews" class="relative overflow-visible text-white reviews-section" style="background: linear-gradient(135deg, #1976a3 0%, #2284B8 40%, #5EAEDD 100%); padding-top: 4.5rem; padding-bottom: 6rem;" role="region" aria-label="Parent reviews" data-sb-object-id="content/home.json">
             <!-- Clean background with subtle texture only -->
             <div class="absolute inset-0 opacity-3">
                 <div class="absolute top-1/3 right-1/4 w-32 h-32 rounded-full" style="background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);"></div>
@@ -1511,11 +1515,11 @@
             <div class="container mx-auto px-6 text-center relative z-10">
                 <!-- Header Block with Proper Spacing -->
                 <div class="mb-12" style="margin-top: 1rem;">
-                <h2 class="text-4xl font-black mb-4">Trusted by 130+ Families in North Jersey</h2>
+                <h2 class="text-4xl font-black mb-4" data-sb-field-path="reviewsTitle">Trusted by 130+ Families in North Jersey</h2>
                     <div class="flex justify-center items-center gap-3">
                         <a href="https://g.page/r/CXvGrH8qTjKUEAE/review" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-xl font-semibold hover:text-yellow-300 transition-colors" aria-label="View SafeStroke's verified Google reviews (opens in new tab)">
                             <span style="color: #FFD166; font-size: 24px;">⭐</span>
-                            <span>5.0 ★ Average on Google — Verified Parent Reviews</span>
+                            <span data-sb-field-path="reviewsSubtitle">5.0 ★ Average on Google — Verified Parent Reviews</span>
                         </a>
                     </div>
                 </div>
@@ -1523,70 +1527,70 @@
                 <!-- Reviews Carousel -->
                 <div class="reviews-carousel max-w-6xl mx-auto relative" role="region" aria-label="Parent reviews carousel">
                     <div class="reviews-viewport" id="reviewsViewport">
-                        <div class="reviews-track" id="reviewsTrack">
+                        <div class="reviews-track" id="reviewsTrack" data-sb-field-path="reviews">
                             <!-- Review 1 -->
-                            <div class="review-slide" role="tabpanel" aria-label="Review by Jamie B.">
+                            <div class="review-slide" role="tabpanel" aria-label="Review by Jamie B." data-sb-field-path=".0">
                                 <div class="review-card text-left shadow-xl">
                                     <div class="flex items-center gap-2 mb-4">
                                         <span style="color: #FFD166; font-size: 20px;" aria-label="5 star rating">★★★★★</span>
                                     </div>
-                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow">"I've used other swim instructors and these guys are by far the best. The <strong>progress we saw</strong> and methods they used blew the others out of the water. Our toddlers thrived with their <strong>swimming capabilities after just one lesson</strong>. I couldn't recommend them more. 10/10"</p>
+                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow" data-sb-field-path=".0.quote">"I've used other swim instructors and these guys are by far the best. The <strong>progress we saw</strong> and methods they used blew the others out of the water. Our toddlers thrived with their <strong>swimming capabilities after just one lesson</strong>. I couldn't recommend them more. 10/10"</p>
                                     <div class="flex items-center gap-3">
                                         <div class="avatar-initials" aria-hidden="true">JB</div>
                                         <div>
-                                            <p class="font-bold">Jamie B.</p>
-                                            <p class="text-sm opacity-80">Parent of 2 • Verified</p>
+                                            <p class="font-bold" data-sb-field-path=".0.author">Jamie B.</p>
+                                            <p class="text-sm opacity-80" data-sb-field-path=".0.title">Parent of 2 • Verified</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Review 2 -->
-                            <div class="review-slide" role="tabpanel" aria-label="Review by Daniella W.">
+                            <div class="review-slide" role="tabpanel" aria-label="Review by Daniella W." data-sb-field-path=".1">
                                 <div class="review-card text-left shadow-xl">
                                     <div class="flex items-center gap-2 mb-4">
                                         <span style="color: #FFD166; font-size: 20px;" aria-label="5 star rating">★★★★★</span>
                                     </div>
-                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow">"My 6yo made <strong>more progress in a few sessions than months</strong> at another swim school. Dave is professional and an excellent teacher. The <strong>small group size made all the difference!</strong>"</p>
+                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow" data-sb-field-path=".1.quote">"My 6yo made <strong>more progress in a few sessions than months</strong> at another swim school. Dave is professional and an excellent teacher. The <strong>small group size made all the difference!</strong>"</p>
                                     <div class="flex items-center gap-3">
                                         <div class="avatar-initials" aria-hidden="true">DW</div>
                                         <div>
-                                            <p class="font-bold">Daniella W.</p>
-                                            <p class="text-sm opacity-80">Parent • Verified</p>
+                                            <p class="font-bold" data-sb-field-path=".1.author">Daniella W.</p>
+                                            <p class="text-sm opacity-80" data-sb-field-path=".1.title">Parent • Verified</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Review 3 -->
-                            <div class="review-slide" role="tabpanel" aria-label="Review by Sarah R.">
+                            <div class="review-slide" role="tabpanel" aria-label="Review by Sarah R." data-sb-field-path=".2">
                                 <div class="review-card text-left shadow-xl">
                                     <div class="flex items-center gap-2 mb-4">
                                         <span style="color: #FFD166; font-size: 20px;" aria-label="5 star rating">★★★★★</span>
                                     </div>
-                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow">"Amazing experience! My daughter was <strong>afraid of water but now she loves swimming</strong>. The instructors are so patient and skilled. <strong>Worth every penny</strong> for the peace of mind and results."</p>
+                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow" data-sb-field-path=".2.quote">"Amazing experience! My daughter was <strong>afraid of water but now she loves swimming</strong>. The instructors are so patient and skilled. <strong>Worth every penny</strong> for the peace of mind and results."</p>
                                     <div class="flex items-center gap-3">
                                         <div class="avatar-initials" aria-hidden="true">SR</div>
                                         <div>
-                                            <p class="font-bold">Sarah R.</p>
-                                            <p class="text-sm opacity-80">Parent • Verified</p>
+                                            <p class="font-bold" data-sb-field-path=".2.author">Sarah R.</p>
+                                            <p class="text-sm opacity-80" data-sb-field-path=".2.title">Parent • Verified</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
                             <!-- Review 4 -->
-                            <div class="review-slide" role="tabpanel" aria-label="Review by Michael K.">
+                            <div class="review-slide" role="tabpanel" aria-label="Review by Michael K." data-sb-field-path=".3">
                                 <div class="review-card text-left shadow-xl">
                                     <div class="flex items-center gap-2 mb-4">
                                         <span style="color: #FFD166; font-size: 20px;" aria-label="5 star rating">★★★★★</span>
                                     </div>
-                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow">"The difference between SafeStroke and other programs is night and day. <strong>Professional, results-driven, and caring</strong>. My son went from scared to <strong>swimming independently in 8 lessons</strong>!"</p>
+                                    <p class="mb-6 italic opacity-95 text-lg leading-relaxed flex-grow" data-sb-field-path=".3.quote">"The difference between SafeStroke and other programs is night and day. <strong>Professional, results-driven, and caring</strong>. My son went from scared to <strong>swimming independently in 8 lessons</strong>!"</p>
                                     <div class="flex items-center gap-3">
                                         <div class="avatar-initials" aria-hidden="true">MK</div>
                                         <div>
-                                            <p class="font-bold">Michael K.</p>
-                                            <p class="text-sm opacity-80">Parent • Verified</p>
+                                            <p class="font-bold" data-sb-field-path=".3.author">Michael K.</p>
+                                            <p class="text-sm opacity-80" data-sb-field-path=".3.title">Parent • Verified</p>
                                         </div>
                                     </div>
                                 </div>
