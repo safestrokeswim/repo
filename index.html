@@ -40,16 +40,16 @@
             font-family: 'Outfit', sans-serif; 
             color: #00253D;
         }
-        /* Mobile: Use mobile-optimized portrait image with better focal positioning */
-        @media (max-width: 768px) {
+        /* Mobile: Use mobile-optimized portrait image with precise focal positioning */
+        @media (max-width: 767px) {
             .hero-bg {
-                background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
+                background-image: url('safestroke-images/johnnydaveback.png'); /* Portrait-friendly asset for mobile */
                 background-size: cover;
-                background-position: 50% 30%; /* Bring faces higher in the crop (28-32% range) */
+                background-position: 50% 27%; /* ≤767px: 26-28% range - bring faces higher */
                 background-repeat: no-repeat;
-                padding-bottom: 140px; /* Extra space for sticky CTA and wave - increased from 120px */
+                padding-bottom: 136px; /* CTA height + 24px extra for safe clearance */
             }
-            /* Mobile stronger left→right scrim (+8-12 percentage points) */
+            /* Mobile stronger left→right scrim (strengthened significantly) */
             .hero-bg::before {
                 content: '';
                 position: absolute;
@@ -58,14 +58,14 @@
                 right: 0;
                 bottom: 0;
                 background: linear-gradient(90deg, 
-                    rgba(11,56,86,0.82) 0%, 
-                    rgba(11,56,86,0.60) 35%, 
-                    rgba(11,56,86,0.30) 60%, 
-                    rgba(11,56,86,0) 85%);
+                    rgba(11,56,86,0.86) 0%, /* +8-10 points from desktop */
+                    rgba(11,56,86,0.66) 35%, 
+                    rgba(11,56,86,0.36) 60%, 
+                    rgba(11,56,86,0) 88%);
                 pointer-events: none;
                 z-index: 1;
             }
-            /* Mobile radial vignette under text cluster */
+            /* Mobile radial vignette under text cluster (tightened) */
             .hero-bg::after {
                 content: '';
                 position: absolute;
@@ -73,18 +73,18 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: radial-gradient(ellipse 70% 50% at 25% 30%, 
-                    rgba(0,0,0,0.28) 0%, 
+                background: radial-gradient(ellipse 60% 45% at 25% 32%, 
+                    rgba(0,0,0,0.32) 0%, /* Increased for better contrast */
                     transparent 60%);
                 pointer-events: none;
                 z-index: 2;
             }
         }
-        /* Very small mobile devices (≤767px) - enhanced scrim and tighter focal point */
+        /* Very small mobile devices (≤767px) - enhanced scrim and safe areas */
         @media (max-width: 767px) {
             .hero-bg {
-                background-position: 50% 28%; /* Tighter positioning at very small sizes */
-                padding-bottom: 150px; /* Additional clearance for sticky CTA */
+                /* Positioning handled above */
+                padding-bottom: 160px; /* Additional clearance for sticky CTA protection */
             }
             .hero-bg::before {
                 background: linear-gradient(90deg, 
@@ -122,15 +122,34 @@
             width: 100vw;
             margin-left: calc(-50vw + 50%);
         }
-        /* Desktop/Tablet: Use desktop photo with precise focal positioning */
-        @media (min-width: 769px) {
+        /* Small tablets and landscape mobile (768-1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
             .hero-bg {
                 background-image: url('safestroke-images/davejohnnyfront.jpg');
                 background-size: cover;
-                background-position: 35% 30%; /* Desktop focal point - slightly left, above center */
+                background-position: 48% 32%; /* 768-1023px focal point */
                 filter: brightness(0.88) contrast(1.04) saturate(0.96);
             }
-            /* Desktop left→right readability scrim */
+        }
+        /* Medium screens (1024-1439px) */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+            .hero-bg {
+                background-image: url('safestroke-images/davejohnnyfront.jpg');
+                background-size: cover;
+                background-position: 42% 30%; /* 1024-1439px focal point */
+                filter: brightness(0.88) contrast(1.04) saturate(0.96);
+            }
+        }
+        /* Large desktop (≥1440px) */
+        @media (min-width: 1440px) {
+            .hero-bg {
+                background-image: url('safestroke-images/davejohnnyfront.jpg');
+                background-size: cover;
+                background-position: 38% 28%; /* ≥1440px focal point */
+                filter: brightness(0.88) contrast(1.04) saturate(0.96);
+            }
+        }
+            /* Desktop left→right readability scrim (strengthened) */
             .hero-bg::before {
                 content: '';
                 position: absolute;
@@ -139,14 +158,14 @@
                 right: 0;
                 bottom: 0;
                 background: linear-gradient(90deg, 
-                    rgba(11,56,86,0.73) 0%, 
-                    rgba(11,56,86,0.50) 35%, 
-                    rgba(11,56,86,0.20) 60%, 
-                    rgba(11,56,86,0) 85%);
+                    rgba(11,56,86,0.78) 0%, /* Desktop strengthened stops */
+                    rgba(11,56,86,0.56) 35%, 
+                    rgba(11,56,86,0.26) 60%, 
+                    rgba(11,56,86,0) 88%);
                 pointer-events: none;
                 z-index: 1;
             }
-            /* Radial vignette under text cluster */
+            /* Radial vignette under text cluster (tightened) */
             .hero-bg::after {
                 content: '';
                 position: absolute;
@@ -154,36 +173,57 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: radial-gradient(ellipse 600px 400px at 25% 30%, 
-                    rgba(0,0,0,0.24) 0%, 
-                    transparent 60%);
+                background: radial-gradient(ellipse 600px 400px at 25% 32%, 
+                    rgba(0,0,0,0.30) 0%, /* Center ~25% x, 32% y with stronger opacity */
+                    transparent 62%);
                 pointer-events: none;
                 z-index: 2;
             }
         }
-        /* Tablet responsive adjustment (768-1199px) - separate focal point */
-        @media (min-width: 768px) and (max-width: 1199px) {
-            .hero-bg {
-                background-position: 40% 35%; /* Tablet-specific focal point */
-            }
+        /* Tablet responsive adjustment (768-1023px) - separate focal point */
+        @media (min-width: 768px) and (max-width: 1023px) {
             .hero-bg::before {
                 background: linear-gradient(90deg, 
-                    rgba(11,56,86,0.78) 0%, 
-                    rgba(11,56,86,0.55) 35%, 
-                    rgba(11,56,86,0.25) 60%, 
-                    rgba(11,56,86,0) 85%);
+                    rgba(11,56,86,0.80) 0%, 
+                    rgba(11,56,86,0.58) 35%, 
+                    rgba(11,56,86,0.28) 60%, 
+                    rgba(11,56,86,0) 88%);
             }
             .hero-bg::after {
-                background: radial-gradient(ellipse 500px 350px at 25% 30%, 
-                    rgba(0,0,0,0.26) 0%, 
-                    transparent 58%);
+                background: radial-gradient(ellipse 500px 350px at 25% 32%, 
+                    rgba(0,0,0,0.28) 0%, 
+                    transparent 62%);
             }
         }
 
-        /* Large desktop (≥1200px) - maintain precise focal point */
-        @media (min-width: 1200px) {
-            .hero-bg {
-                background-position: 35% 30%; /* Large desktop focal point */
+        /* Medium desktop (1024-1439px) overlay adjustments */
+        @media (min-width: 1024px) and (max-width: 1439px) {
+            .hero-bg::before {
+                background: linear-gradient(90deg, 
+                    rgba(11,56,86,0.78) 0%, 
+                    rgba(11,56,86,0.56) 35%, 
+                    rgba(11,56,86,0.26) 60%, 
+                    rgba(11,56,86,0) 88%);
+            }
+            .hero-bg::after {
+                background: radial-gradient(ellipse 550px 380px at 25% 32%, 
+                    rgba(0,0,0,0.26) 0%, 
+                    transparent 62%);
+            }
+        }
+        /* Large desktop (≥1440px) overlay adjustments */
+        @media (min-width: 1440px) {
+            .hero-bg::before {
+                background: linear-gradient(90deg, 
+                    rgba(11,56,86,0.78) 0%, 
+                    rgba(11,56,86,0.56) 35%, 
+                    rgba(11,56,86,0.26) 60%, 
+                    rgba(11,56,86,0) 90%);
+            }
+            .hero-bg::after {
+                background: radial-gradient(ellipse 600px 400px at 25% 32%, 
+                    rgba(0,0,0,0.26) 0%, 
+                    transparent 62%);
             }
         }
 
@@ -192,7 +232,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 150px; /* Increased height for taller, more organic waves */
+            height: 120px; /* Capped at ≤120px desktop per guardrail */
             z-index: 3;
             margin-top: auto;
         }
@@ -204,7 +244,7 @@
         /* Mobile wave scaling */
         @media (max-width: 768px) {
             .hero-wave {
-                height: 100px; /* Proportionally taller on mobile */
+                height: 88px; /* Capped at ≤88px mobile per guardrail */
             }
         }
         .hero-container {
@@ -214,13 +254,13 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: clamp(32px, 8vh, 120px) clamp(16px, 4vw, 40px) clamp(120px, 12vh, 140px); /* Increased bottom padding for face clearance */
+            padding: clamp(96px, 10vh, 120px) clamp(16px, 4vw, 40px) clamp(120px, 12vh, 140px); /* ≥96px top for face clearance */
         }
         @media (max-width: 768px) {
             .hero-container {
                 justify-content: center; /* center on mobile */
                 align-items: center;
-                padding: clamp(40px, 8vh, 80px) 16px clamp(140px, 15vh, 160px); /* Extra bottom padding for mobile sticky CTA */
+                padding: clamp(72px, 8vh, 80px) 16px clamp(140px, 15vh, 160px); /* ≥72px mobile top for face clearance */
             }
         }
         /* Ensure safe area above CTAs on all breakpoints */
@@ -237,7 +277,7 @@
         }
         @media (min-width: 769px) {
             .hero-content {
-                max-width: min(65vw, 720px); /* Expanded to full 640-720px range */
+                max-width: min(65vw, 720px); /* Constrained to 640-720px range */
                 text-align: left;
                 padding-left: 32px; /* 24-32px padding requirement */
             }
@@ -271,10 +311,10 @@
             font-family: 'Outfit', sans-serif;
             font-weight: 700;
             font-size: clamp(32px, 4.5vw, 56px);
-            line-height: 1.15; /* 1.12-1.18 range */
+            line-height: 1.16; /* 1.12-1.18 range */
             color: #FFFFFF; /* Pure white */
             margin-bottom: 24px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.35); /* Separation shadow */
+            text-shadow: 0 2px 14px rgba(0,0,0,0.38); /* Enhanced shadow for better separation */
             position: relative;
             z-index: 1;
             animation: fadeInUp 0.8s ease-out 0.4s both;
@@ -293,7 +333,7 @@
         }
         .hero-title .accent {
             color: #5EAEDD; /* Light brand blue for better contrast */
-            text-shadow: 0 2px 12px rgba(0,0,0,0.35); /* Same shadow as H1 */
+            text-shadow: 0 2px 14px rgba(0,0,0,0.38); /* Same enhanced shadow as H1 */
         }
         @media (max-width: 768px) {
             .hero-title .accent {
@@ -305,7 +345,7 @@
             font-weight: 400;
             font-size: clamp(18px, 2.2vw, 20px); /* 18-20px desktop */
             line-height: 1.5; /* 1.45-1.55 range */
-            color: rgba(255, 255, 255, 0.92); /* 90-94% white */
+            color: rgba(255, 255, 255, 0.94); /* 94% white for better contrast */
             margin-bottom: 32px;
             position: relative;
             z-index: 1;
@@ -359,7 +399,7 @@
             justify-content: center;
             min-height: 56px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1); /* Subtle inner white keyline */
+            border: 1px solid rgba(255,255,255,0.5); /* Enhanced inner white keyline for better visibility */
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
@@ -374,8 +414,8 @@
         }
         .btn-secondary {
             background: transparent;
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.92); /* Bright white border */
+            color: rgba(255, 255, 255, 0.96); /* Enhanced white text */
+            border: 2px solid rgba(255, 255, 255, 0.96); /* Enhanced white border */
             border-radius: 12px;
             padding: clamp(13px, 2vw, 14px) clamp(28px, 4vw, 32px); /* Adjusted for border */
             font-family: 'Outfit', sans-serif;
@@ -408,7 +448,7 @@
             }
         }
         .trust-badge {
-            background: rgba(11,56,86,0.31); /* Semi-transparent navy background */
+            background: rgba(11,56,86,0.34); /* Enhanced semi-transparent navy background */
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             padding: 12px 20px;
@@ -419,7 +459,7 @@
             z-index: 1;
             white-space: nowrap;
             animation: fadeInUp 0.8s ease-out 1.2s both; /* Fade in last */
-            backdrop-filter: blur(10px); /* Increased blur for better clarity */
+            backdrop-filter: blur(10px); /* Enhanced blur for better clarity */
         }
         .trust-badge .stars {
             color: #FFD166; /* Gold stars */
@@ -428,7 +468,7 @@
             padding: 0 4px; /* Extra padding around stars */
         }
         .trust-badge .text {
-            color: rgba(255, 255, 255, 0.90);
+            color: rgba(255, 255, 255, 0.96); /* Enhanced white for better contrast */
             font-family: 'Outfit', sans-serif;
             font-weight: 500; /* Medium */
             font-size: clamp(14px, 2.5vw, 16px); /* 14-16px range */
@@ -1935,6 +1975,27 @@
             // DOM is already ready
             new ReviewsCarousel();
         }
+        
+        // Hero Background Position Re-snap on Resize/Orientation Change
+        function updateHeroPosition() {
+            const heroElement = document.querySelector('.hero-bg');
+            if (!heroElement) return;
+            
+            // Force a repaint to ensure background position updates properly
+            heroElement.style.display = 'none';
+            heroElement.offsetHeight; // Trigger reflow
+            heroElement.style.display = '';
+        }
+        
+        // Add event listeners for resize and orientation change
+        window.addEventListener('resize', updateHeroPosition);
+        window.addEventListener('orientationchange', function() {
+            // Delay slightly for orientation change to complete
+            setTimeout(updateHeroPosition, 100);
+        });
+        
+        // Initial position update on load
+        window.addEventListener('load', updateHeroPosition);
     </script>
 </body>
 </html>
