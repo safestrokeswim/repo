@@ -15,9 +15,9 @@
     "stripe": "^14.0.0"
   },
   "devDependencies": {
-    "@stackbit/cli": "^1.0.0",
-    "@stackbit/types": "^1.0.0",
-    "@stackbit/cms-git": "^1.0.0",
+    "@stackbit/cli": "^0.6.0",
+    "@stackbit/types": "^2.0.0",
+    "@stackbit/cms-git": "^0.6.0",
     "http-server": "^14.1.1"
   },
   "engines": {
