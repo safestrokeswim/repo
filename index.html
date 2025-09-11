@@ -40,6 +40,28 @@
             font-family: 'Outfit', sans-serif; 
             color: #00253D;
         }
+        /* Mobile: Use new cropped hero image */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
+                background-size: cover;
+                background-position: center 25%; /* Adjusted to better center on child's face */
+                background-repeat: no-repeat;
+                padding-bottom: 120px; /* space for sticky CTA and wave */
+            }
+            /* Mobile gradient overlay for text readability */
+            .hero-bg::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(180deg, rgba(11,56,86,0.3) 0%, rgba(11,56,86,0.1) 100%);
+                pointer-events: none;
+                z-index: 1;
+            }
+        }
         /* Add padding bottom on mobile for sticky button */
         @media (max-width: 768px) {
             body { padding-bottom: 88px; }
@@ -65,31 +87,15 @@
                 background-position: center left;
                 filter: brightness(0.86) contrast(1.06) saturate(0.95);
             }
-        }
-        /* Mobile: Use new cropped hero image */
-        @media (max-width: 768px) {
-            .hero-bg {
-                background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
-                background-size: cover;
-                background-position: center 25%; /* Adjusted to better center on child's face */
-                background-repeat: no-repeat;
-                padding-bottom: 96px; /* space for sticky CTA */
-            }
-            /* Remove the decorative graphics overlay on mobile since we have the photo */
-            .hero-bg::after {
-                display: none;
-            }
-        }
-        /* Desktop/Tablet overlay only */
-        @media (min-width: 769px) {
+            /* Desktop gradient overlay for text readability */
             .hero-bg::before {
                 content: '';
                 position: absolute;
                 top: 0;
                 left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(180deg, rgba(11,56,86,0.16) 0%, rgba(11,56,86,0.30) 60%, rgba(11,56,86,0.34) 100%);
+                width: 60%;
+                height: 100%;
+                background: linear-gradient(90deg, rgba(11,56,86,0.4) 0%, rgba(11,56,86,0.2) 70%, transparent 100%);
                 pointer-events: none;
                 z-index: 1;
             }
@@ -100,7 +106,7 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 120px; /* Increased height for stronger presence */
+            height: 150px; /* Increased height for taller, more organic waves */
             z-index: 3;
             margin-top: auto;
         }
@@ -112,7 +118,7 @@
         /* Mobile wave scaling */
         @media (max-width: 768px) {
             .hero-wave {
-                height: 80px; /* Smaller on mobile for better proportions */
+                height: 100px; /* Proportionally taller on mobile */
             }
         }
         .hero-container {
@@ -127,53 +133,63 @@
         @media (max-width: 768px) {
             .hero-container {
                 justify-content: center; /* center on mobile */
-                align-items: flex-end; /* Position lower to show more of child's face */
-                padding: clamp(40px, 8vh, 80px) 16px clamp(60px, 10vh, 120px); /* Lower positioning */
+                align-items: center;
+                padding: clamp(40px, 8vh, 80px) 16px clamp(60px, 10vh, 120px);
             }
         }
-        .hero-content-panel {
-            background: rgba(11,56,86,0.20); /* Reduced opacity 18-20% */
-            backdrop-filter: blur(10px); /* Increased blur for softer effect */
-            border-radius: 16px;
-            padding: clamp(24px, 4vw, 32px);
-            max-width: min(92vw, 640px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        .hero-content {
+            max-width: min(92vw, 700px);
             position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
+            z-index: 2;
         }
         @media (min-width: 769px) {
-            .hero-content-panel {
-                max-width: min(60vw, 640px);
-                background: rgba(11,56,86,0.24); /* slightly darker for desktop photo */
+            .hero-content {
+                max-width: min(65vw, 700px);
+                text-align: left;
             }
         }
         @media (max-width: 768px) {
-            .hero-content-panel {
-                max-width: 88%; /* 85-90% width range for balance */
-                background: rgba(11,56,86,0.18); /* Lighter 18% opacity on mobile */
-                backdrop-filter: blur(9px); /* Softer blur on mobile */
-                margin: 0 auto; /* center on mobile */
+            .hero-content {
+                max-width: 90%;
+                text-align: center;
+                margin: 0 auto;
+            }
+        }
+        /* Hero Tagline */
+        .hero-tagline {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: clamp(14px, 2.5vw, 18px);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        @media (max-width: 768px) {
+            .hero-tagline {
+                text-align: center;
+                font-size: 14px;
             }
         }
         .hero-title {
             font-family: 'Outfit', sans-serif;
-            font-weight: 600; /* SemiBold */
-            font-size: clamp(28px, 3.5vw, 48px);
-            line-height: 1.15; /* Tighter line spacing */
+            font-weight: 700; /* Bold */
+            font-size: clamp(32px, 4.5vw, 56px); /* Larger and more balanced */
+            line-height: 1.1;
             color: #FFFFFF;
             margin-bottom: 24px;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.35); /* Enhanced contrast */
+            text-shadow: 0 3px 15px rgba(0,0,0,0.4);
             position: relative;
             z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
         @media (max-width: 768px) {
             .hero-title {
-                font-size: clamp(28px, 7.2vw, 32px);
-                line-height: 1.1; /* Even tighter on mobile for less boxy feel */
+                font-size: clamp(28px, 7.5vw, 36px);
+                line-height: 1.05;
                 text-align: center;
-                text-shadow: 0 3px 15px rgba(0,0,0,0.5); /* Stronger shadow for bright water highlights */
-                /* Keep entire headline white on mobile for contrast */
+                text-shadow: 0 3px 15px rgba(0,0,0,0.6);
             }
         }
         .hero-title .accent {
@@ -187,32 +203,40 @@
         }
         .hero-subtitle {
             font-family: 'Outfit', sans-serif;
-            font-weight: 400; /* Regular */
-            font-size: clamp(16px, 1.5vw, 20px);
-            line-height: 1.45;
-            color: rgba(255, 255, 255, 0.90);
-            margin-bottom: 24px;
+            font-weight: 400;
+            font-size: clamp(18px, 2.2vw, 20px); /* Increased to 18-20px */
+            line-height: 1.5; /* Better line height */
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 32px;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        .hero-subtitle .highlight {
+            color: #2284B8; /* Brand blue highlight */
+            font-weight: 600;
         }
         @media (max-width: 768px) {
             .hero-subtitle {
-                font-size: clamp(16px, 4.2vw, 18px); /* Ensure 16-18px range for legibility */
-                line-height: 1.5;
+                font-size: 18px;
+                line-height: 1.4;
                 text-align: center;
+                margin-bottom: 28px;
             }
         }
         .hero-buttons {
             display: flex;
-            gap: clamp(16px, 3vw, 20px); /* 16-20px gap */
+            gap: clamp(16px, 3vw, 20px);
             margin-bottom: 24px;
             position: relative;
             z-index: 1;
+            animation: fadeInUp 0.8s ease-out 0.8s both;
         }
         @media (max-width: 768px) {
             .hero-buttons {
                 flex-direction: column;
-                gap: 14px; /* 12-16px range */
+                gap: 16px;
+                align-items: center;
             }
         }
         .btn-primary {
@@ -235,8 +259,8 @@
             z-index: 1;
         }
         .btn-primary:hover {
-            background: #2D96CC; /* Specified hover color */
-            transform: scale(1.02);
+            background: #2D96CC;
+            transform: scale(1.02) translateY(-2px); /* Added subtle bounce */
         }
         .btn-primary:focus {
             outline: 3px solid rgba(255,255,255,0.8);
@@ -262,10 +286,10 @@
             z-index: 1;
         }
         .btn-secondary:hover {
-            background: #2284B8; /* Fill with brand blue */
+            background: #2284B8;
             color: white;
             border-color: #2284B8;
-            transform: scale(1.02);
+            transform: scale(1.02) translateY(-2px); /* Added subtle bounce */
         }
         .btn-secondary:focus {
             outline: 3px solid rgba(255,255,255,0.8);
@@ -278,16 +302,18 @@
             }
         }
         .trust-badge {
-            background: rgba(11,56,86,0.40); /* Navy ~40% opacity */
-            border-radius: 10px; /* Rounded corners */
-            padding: 10px 16px; /* More horizontal padding */
-            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 20px;
             display: inline-flex;
             align-items: center;
-            gap: 10px; /* Slightly more gap between stars and text */
+            gap: 12px;
             position: relative;
             z-index: 1;
-            white-space: nowrap; /* Keep on single line where possible */
+            white-space: nowrap;
+            animation: fadeInUp 0.8s ease-out 1.2s both; /* Fade in last */
+            backdrop-filter: blur(8px);
         }
         .trust-badge .stars {
             color: #FFD166; /* Gold stars */
@@ -315,15 +341,17 @@
             color: rgba(255, 255, 255, 0.84);
             font-family: 'Outfit', sans-serif;
             font-weight: 400;
-            font-size: clamp(15px, 2.2vw, 16px); /* 15-16px on mobile */
+            font-size: clamp(14px, 2vw, 16px);
             position: relative;
             z-index: 1;
             line-height: 1.4;
+            margin-top: 8px;
+            animation: fadeInUp 0.8s ease-out 1.4s both;
         }
         @media (max-width: 768px) {
             .trust-subtext {
                 text-align: center;
-                font-size: 16px; /* Better mobile legibility */
+                font-size: 14px;
             }
         }
         /* Sticky CTA responsive height */
@@ -427,7 +455,7 @@
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -986,9 +1014,10 @@
     <!-- Hero Section -->
     <header class="hero-bg text-white">
         <div class="container mx-auto hero-container">
-            <div class="hero-content-panel">
+            <div class="hero-content">
+                <div class="hero-tagline">Where Safety Meets Progress</div>
                 <h1 class="hero-title">North Jersey's Specialized Swim Academy for <span class="accent">Toddlers & Kids</span></h1>
-                <p class="hero-subtitle">From bubbles to back floats to swimming across the pool — we teach kids the fundamentals that build capability, confidence, and true water safety.</p>
+                <p class="hero-subtitle">From <span class="highlight">bubbles to back floats</span> to swimming across the pool — we teach kids the <span class="highlight">fundamentals</span> that build capability, confidence, and <span class="highlight">true water safety</span>.</p>
                 
                 <div class="hero-buttons">
                     <a href="safestroke-booking.html" class="btn-primary" aria-label="Book a free swim lesson with SafeStroke Swim Academy">Book Free Lesson</a>
@@ -1005,15 +1034,21 @@
             </div>
         </div>
         <div class="hero-wave">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <svg viewBox="0 0 1200 150" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="heroWaveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="heroWave1" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color:#2284B8;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#5EAEDD;stop-opacity:0.8" />
+                    </linearGradient>
+                    <linearGradient id="heroWave2" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#E9F5FC;stop-opacity:0.9" />
                         <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <!-- Single smooth wave transitioning from hero to white -->
-                <path d="M0,60 C300,20 600,100 900,60 C1050,40 1150,80 1200,60 L1200,120 L0,120 Z" fill="url(#heroWaveGradient)"/>
+                <!-- Second layer: pale blue to white (background) -->
+                <path d="M0,80 C200,40 400,120 600,80 C800,50 1000,110 1200,75 L1200,150 L0,150 Z" fill="url(#heroWave2)"/>
+                <!-- First layer: darker brand blue (foreground) -->
+                <path d="M0,70 C300,20 600,110 900,65 C1050,40 1150,95 1200,65 L1200,150 L0,150 Z" fill="url(#heroWave1)"/>
             </svg>
         </div>
         <img src="safestroke-images/davejohnnyfront.jpg" alt="Toddler swim lesson with instructor at SafeStroke Swim Academy, Clifton NJ" style="display: none;">
