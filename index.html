@@ -49,12 +49,13 @@
         }
         .hero-bg { 
             position: relative;
-            border-radius: 0 0 2rem 2rem;
             overflow: hidden;
             min-height: 100svh;
             min-height: 100vh; /* fallback */
             display: flex;
             flex-direction: column;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
         }
         /* Desktop/Tablet: Use photo background */
         @media (min-width: 769px) {
@@ -70,7 +71,7 @@
             .hero-bg {
                 background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
                 background-size: cover;
-                background-position: center 20%; /* Recenter to show child's face better */
+                background-position: center 25%; /* Adjusted to better center on child's face */
                 background-repeat: no-repeat;
                 padding-bottom: 96px; /* space for sticky CTA */
             }
@@ -108,6 +109,12 @@
             height: 100%;
             display: block;
         }
+        /* Mobile wave scaling */
+        @media (max-width: 768px) {
+            .hero-wave {
+                height: 80px; /* Smaller on mobile for better proportions */
+            }
+        }
         .hero-container {
             position: relative;
             z-index: 10;
@@ -133,6 +140,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.18);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for definition */
         }
         @media (min-width: 769px) {
             .hero-content-panel {
@@ -976,7 +984,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg text-white mx-4 mt-4">
+    <header class="hero-bg text-white">
         <div class="container mx-auto hero-container">
             <div class="hero-content-panel">
                 <h1 class="hero-title">North Jersey's Specialized Swim Academy for <span class="accent">Toddlers & Kids</span></h1>
@@ -999,25 +1007,13 @@
         <div class="hero-wave">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="waveGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#2284B8;stop-opacity:0.95" />
-                        <stop offset="100%" style="stop-color:#2284B8;stop-opacity:0.8" />
-                    </linearGradient>
-                    <linearGradient id="waveGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#5EAEDD;stop-opacity:0.85" />
-                        <stop offset="100%" style="stop-color:#5EAEDD;stop-opacity:0.7" />
-                    </linearGradient>
-                    <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#E9F5FC;stop-opacity:0.9" />
-                        <stop offset="100%" style="stop-color:#E9F5FC;stop-opacity:1" />
+                    <linearGradient id="heroWaveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#2284B8;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <!-- Bottom layer - lightest, most fluid -->
-                <path d="M0,50 C150,25 300,60 450,45 C600,30 750,55 900,40 C1050,25 1150,50 1200,40 L1200,120 L0,120 Z" fill="url(#waveGradient3)"/>
-                <!-- Middle layer - medium blue -->
-                <path d="M0,65 C200,40 400,70 600,55 C800,40 1000,65 1200,50 L1200,120 L0,120 Z" fill="url(#waveGradient2)"/>
-                <!-- Top layer - darkest blue, most prominent -->
-                <path d="M0,75 C300,50 600,85 900,70 C1050,60 1150,75 1200,65 L1200,120 L0,120 Z" fill="url(#waveGradient1)"/>
+                <!-- Single smooth wave transitioning from hero to white -->
+                <path d="M0,60 C300,20 600,100 900,60 C1050,40 1150,80 1200,60 L1200,120 L0,120 Z" fill="url(#heroWaveGradient)"/>
             </svg>
         </div>
         <img src="safestroke-images/davejohnnyfront.jpg" alt="Toddler swim lesson with instructor at SafeStroke Swim Academy, Clifton NJ" style="display: none;">
