@@ -542,6 +542,18 @@
             line-height: 1.5;
             margin-bottom: 16px;
         }
+        /* Level labels styling for Strokelet */
+        .program-description .level-label {
+            color: #0B3856;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: block;
+            margin-bottom: 0.25rem;
+            margin-top: 0.75rem;
+        }
+        .program-description .level-label:first-child {
+            margin-top: 0;
+        }
         .program-features {
             margin-bottom: 20px;
         }
@@ -559,6 +571,13 @@
                 transform: none;
                 border: 2px solid #FFD166;
                 box-shadow: 0 12px 30px rgba(255, 209, 102, 0.2);
+            }
+            .program-description .level-label {
+                font-size: 0.85rem;
+                margin-top: 0.5rem;
+            }
+            .program-description .level-label:first-child {
+                margin-top: 0;
             }
         }
         /* Program title hover color - brand consistency */
@@ -1100,9 +1119,9 @@
                             <div class="mb-4 transform transition-transform group-hover:scale-110 group-hover:rotate-3">
                                 <img src="safestroke-images/strokelet-shield.png" alt="Strokelet Shield" class="w-16 h-16">
                             </div>
-                            <h3 class="text-2xl font-bold mb-3 program-title-hover">Strokelet Level 1</h3>
+                            <h3 class="text-2xl font-bold mb-3 program-title-hover">Strokelet</h3>
                             <div class="age-badge">Ages 3-12 years</div>
-                            <p class="font-semibold text-gray-700 mb-2">Core Swimming Fundamentals</p>
+                            <p class="font-semibold text-gray-700 mb-2">Advanced Learning & Water Safety</p>
                         </div>
                         
                         <div class="pricing-display">
@@ -1111,15 +1130,18 @@
                         </div>
                         
                         <div class="program-description text-gray-700">
-                            <p class="mb-3">Kids master <strong>breath control, floats, and the jump-resurface skill</strong>. Graduates can float 5–10 seconds and swim a few yards independently.</p>
-                            <p class="mb-4">Students develop swimming competency in a supportive environment with personalized instruction and proven fundamentals.</p>
+                            <div class="level-label">Level 1 (Foundations):</div>
+                            <p class="mb-3">Kids master <strong>breath control, floats, and the jump-resurface skill</strong>. Graduates can float 5–10 seconds and swim a few yards independently, building confidence and comfort in the water.</p>
+                            <div class="level-label">Level 2 (Water-Safe Swimmers):</div>
+                            <p class="mb-4">Students refine efficiency and endurance, learning streamlined kicks, basic freestyle, and backstroke. Graduates can swim 12+ yards, float for 1+ minute, and climb out unassisted.</p>
                         </div>
                         
                         <ul class="program-features text-sm text-gray-600 space-y-2">
                             <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> 3:1 max ratio</li>
                             <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> 12-lesson progression</li>
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Swimming guaranteed*</li>
-                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Stroke technique mastery</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Back float + starfish mastery</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Stroke technique development (intro freestyle + backstroke)</li>
+                            <li class="flex items-start"><span class="text-green-500 mr-2 mt-0.5">✓</span> Graduation = truly water-safe</li>
                         </ul>
                         
                         <div class="trust-proof">
