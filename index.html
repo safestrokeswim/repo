@@ -43,9 +43,9 @@
         /* Mobile: Use mobile-optimized portrait image with precise focal positioning */
         @media (max-width: 767px) {
             .hero-bg {
-                background-image: url('safestroke-images/entirepool&people.jpg?v=3'); /* New image showing pool and people */
+                background-image: url('safestroke-images/johnnydaveback.png?v=2'); /* Portrait-friendly asset for mobile */
                 background-size: cover;
-                background-position: 50% 25%; /* Centered horizontally, showing people in upper portion */
+                background-position: 50% 20%; /* Original working position */
                 background-repeat: no-repeat;
                 padding-bottom: 136px; /* CTA height + 24px extra for safe clearance */
             }
@@ -136,27 +136,27 @@
         /* Small tablets and landscape mobile (768-1023px) */
         @media (min-width: 768px) and (max-width: 1023px) {
             .hero-bg {
-                background-image: url('safestroke-images/entirepool&people.jpg?v=3');
+                background-image: url('safestroke-images/davejohnnyfront.jpg?v=2');
                 background-size: cover;
-                background-position: 50% 30%; /* Centered horizontally, showing people clearly */
+                background-position: 48% 25%; /* Original working position */
                 filter: brightness(0.88) contrast(1.04) saturate(0.96);
             }
         }
         /* Medium screens (1024-1439px) */
         @media (min-width: 1024px) and (max-width: 1439px) {
             .hero-bg {
-                background-image: url('safestroke-images/entirepool&people.jpg?v=3');
+                background-image: url('safestroke-images/davejohnnyfront.jpg?v=2');
                 background-size: cover;
-                background-position: 50% 25%; /* Centered horizontally, upper portion visible */
+                background-position: 42% 23%; /* Original working position */
                 filter: brightness(0.88) contrast(1.04) saturate(0.96);
             }
         }
         /* Large desktop (≥1440px) */
         @media (min-width: 1440px) {
             .hero-bg {
-                background-image: url('safestroke-images/entirepool&people.jpg?v=3');
+                background-image: url('safestroke-images/davejohnnyfront.jpg?v=2');
                 background-size: cover;
-                background-position: 50% 20%; /* Centered horizontally, people prominently displayed */
+                background-position: 38% 21%; /* Original working position */
                 filter: brightness(0.88) contrast(1.04) saturate(0.96);
             }
         }
@@ -1185,15 +1185,13 @@
             </div>
 
             <!-- Centered Navigation Links for Desktop -->
-            <div class="hidden md:flex flex-grow justify-center items-center space-x-8 font-semibold" data-sb-object-id="content/site.json">
-                <div data-sb-field-path="navItems">
-                    <a href="index.html" class="nav-link active" data-sb-field-path=".0"><span data-sb-field-path=".0.label">Main</span></a>
-                    <a href="safestroke-programs.html" class="nav-link" data-sb-field-path=".1"><span data-sb-field-path=".1.label">Programs</span></a>
-                    <a href="safestroke-pricing.html" class="nav-link" data-sb-field-path=".2"><span data-sb-field-path=".2.label">Pricing</span></a>
-                    <a href="safestroke-aboutus.html" class="nav-link" data-sb-field-path=".3"><span data-sb-field-path=".3.label">About Us</span></a>
-                    <a href="safestroke-reviews.html" class="nav-link" data-sb-field-path=".4"><span data-sb-field-path=".4.label">Reviews</span></a>
-                    <a href="safestroke-location.html" class="nav-link" data-sb-field-path=".5"><span data-sb-field-path=".5.label">Our Location</span></a>
-                </div>
+            <div class="hidden md:flex flex-grow justify-center items-center space-x-8 font-semibold" data-sb-object-id="content/site.json" data-sb-field-path="navItems">
+                <a href="index.html" class="nav-link active" data-sb-field-path=".0"><span data-sb-field-path=".0.label">Main</span></a>
+                <a href="safestroke-programs.html" class="nav-link" data-sb-field-path=".1"><span data-sb-field-path=".1.label">Programs</span></a>
+                <a href="safestroke-pricing.html" class="nav-link" data-sb-field-path=".2"><span data-sb-field-path=".2.label">Pricing</span></a>
+                <a href="safestroke-aboutus.html" class="nav-link" data-sb-field-path=".3"><span data-sb-field-path=".3.label">About Us</span></a>
+                <a href="safestroke-reviews.html" class="nav-link" data-sb-field-path=".4"><span data-sb-field-path=".4.label">Reviews</span></a>
+                <a href="safestroke-location.html" class="nav-link" data-sb-field-path=".5"><span data-sb-field-path=".5.label">Our Location</span></a>
             </div>
             
             <!-- Book Now Button (Right, Desktop) -->
