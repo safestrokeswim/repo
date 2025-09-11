@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "SafeStroke booking system",
   "scripts": {
-    "build": "echo 'No build step required - static site with dynamic content'",
+    "build": "echo Building...",
     "dev": "http-server . -p 5173 -c-1",
     "start": "http-server . -p 8080 -c-1"
   },

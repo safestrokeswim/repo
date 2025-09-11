@@ -1,7 +1,7 @@
 # SafeStroke Website Setup Guide
 
 ## Overview
-This is the SafeStroke swimming lessons booking website with Stripe payments and Supabase backend.
+This is the SafeStroke swimming lessons booking website with Stripe payments, Supabase backend, and a simple content management system.
 
 ## Quick Setup Guide
 
@@ -59,61 +59,83 @@ Once deployed, your website will be able to:
 - Allow customers to book classes with their codes
 - Store everything in your Supabase database
 
-## Visual Editor (Stackbit) Setup
+## Content Management System
 
-### What's Already Configured
-Your website is fully set up with Netlify's Visual Editor (Stackbit) for click-to-edit content:
+### ✅ What's Already Set Up
+Your website has a powerful, simple content management system:
 
-- ✅ Stackbit configuration (`stackbit.config.ts`)
-- ✅ Content JSON files in `/content/` directory
+- ✅ Content stored in JSON files (`/content/` directory)
+- ✅ Client-side content hydration (updates automatically)
 - ✅ HTML annotations with `data-sb-*` attributes
-- ✅ Client-side content hydration script
-- ✅ NPM dependencies and scripts
+- ✅ Zero build dependencies (no deployment failures)
+- ✅ Instant deployments on content changes
 
-### How to Use Visual Editor
+### How to Edit Content
 
-#### Local Development
+#### Method 1: Direct File Editing (Recommended)
 ```bash
-# Install dependencies
-npm install
-
-# Start local development server
-npm run dev
-# Site will be available at http://localhost:5173
-
-# In another terminal, start Visual Editor
-npm run sb:dev
-# Follow the URL provided to open Visual Editor
+# Edit content files directly in your repository:
+# content/site.json     - Navigation, contact info, global content
+# content/home.json     - Homepage content, hero section, reviews
 ```
 
-#### Production Editing
-1. Go to your Netlify site dashboard
-2. Navigate to **Visual Editor** tab
-3. Click elements on your site to edit them
-4. Click **Publish** to commit changes to GitHub
-5. Netlify will automatically deploy the updates
+#### Method 2: Online JSON Editor
+For a better editing experience:
+1. Copy content from your JSON files
+2. Edit at https://jsoneditoronline.org/
+3. Paste back and commit to GitHub
 
-#### Editable Content
-- **Navigation menu** (links and labels)
-- **Hero section** (headline, subtext, buttons)
-- **Trust badges** (reviews count, testimonials)
-- **Reviews section** (individual reviews, ratings)
-- **Contact information** (phone, address)
-- **Call-to-action buttons** (text and links)
+#### Method 3: Local Development
+```bash
+# Install and run locally
+npm install
+npm run dev
+# Site available at http://localhost:5173
+# Edit JSON files and refresh to see changes
+```
 
-#### Adding New Editable Content
-1. Add new fields to `stackbit.config.ts` models
-2. Update corresponding JSON files in `/content/`
-3. Add `data-sb-field-path` attributes to HTML elements
-4. Content will automatically sync via the hydration script
+### Editable Content Areas
+
+| Section | What You Can Edit | File Location |
+|---------|------------------|---------------|
+| **Navigation** | Menu items, labels, "Book Now" button | `content/site.json` |
+| **Hero Section** | Headlines, taglines, button text | `content/home.json` |
+| **Contact Info** | Phone number, address | `content/site.json` |
+| **Reviews** | Testimonials, ratings, customer names | `content/home.json` |
+| **Trust Elements** | Badge text, family count | `content/home.json` |
+
+### How Content Updates Work
+1. Edit JSON files in `/content/` directory
+2. Commit changes to GitHub
+3. Netlify automatically deploys (no build step needed)
+4. JavaScript hydration script updates the page content
+5. Changes appear instantly on your live site
+
+### Adding New Editable Content
+1. Add new field to appropriate JSON file
+2. Add `data-sb-field-path="newFieldName"` to HTML element
+3. Content will automatically sync via hydration script
 
 ### Content Structure
-- `content/site.json` - Global site content (nav, contact info)
-- `content/home.json` - Homepage-specific content (hero, reviews)
+```
+content/
+├── site.json     # Global site content
+│   ├── navItems  # Navigation menu
+│   ├── phone     # Contact phone
+│   ├── address   # Business address
+│   └── ctaLabel  # Call-to-action button text
+│
+└── home.json     # Homepage content
+    ├── heroHeadline    # Main headline
+    ├── heroSubhead     # Subtitle
+    ├── trustBadgeText  # Trust indicator
+    ├── reviews         # Customer testimonials
+    └── [more fields]   # Other homepage content
+```
 
 ## Need Help?
 If you get stuck, check:
 1. Netlify Functions logs (in Netlify dashboard > Functions)
 2. Supabase logs (in Supabase dashboard > Logs)
 3. Browser console for frontend errors
-4. Stackbit Visual Editor documentation: https://docs.stackbit.com
+4. Content management guide: See `CONTENT-MANAGEMENT.md` for detailed instructions
