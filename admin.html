@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeStroke Content Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">SafeStroke Content Editor</h1>
+            <p class="text-gray-600 mb-6">Edit your website content easily. Changes will generate code that you can copy and paste into your JSON files.</p>
+            
+            <!-- Tab Navigation -->
+            <div class="border-b border-gray-200 mb-6">
+                <nav class="-mb-px flex space-x-8">
+                    <button class="tab-btn active border-b-2 border-blue-500 py-2 px-1 text-sm font-medium text-blue-600" data-tab="site">
+                        Site Settings
+                    </button>
+                    <button class="tab-btn border-b-2 border-transparent py-2 px-1 text-sm font-medium text-gray-500 hover:text-gray-700" data-tab="home">
+                        Homepage Content
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Site Settings Tab -->
+            <div id="site-tab" class="tab-content">
+                <h2 class="text-xl font-semibold mb-4">Site Settings (site.json)</h2>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="text" id="phone" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="973-820-1153">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Address</label>
+                        <input type="text" id="address" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="199 Scoles Ave, Clifton NJ">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Call-to-Action Button Text</label>
+                        <input type="text" id="ctaLabel" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Book Now">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Navigation Menu Items</label>
+                        <div id="navItems" class="space-y-2">
+                            <!-- Navigation items will be added here dynamically -->
+                        </div>
+                        <button type="button" id="addNavItem" class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 text-sm">
+                            Add Menu Item
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Homepage Content Tab -->
+            <div id="home-tab" class="tab-content hidden">
+                <h2 class="text-xl font-semibold mb-4">Homepage Content (home.json)</h2>
+                
+                <div class="space-y-6">
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <h3 class="text-lg font-medium mb-3">Hero Section</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Tagline</label>
+                                <input type="text" id="heroTagline" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Where Safety Meets Progress">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Main Headline</label>
+                                <textarea id="heroHeadline" rows="2" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="North Jersey's Specialized Swim Academy for Toddlers & Kids"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Subtitle</label>
+                                <textarea id="heroSubhead" rows="3" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="From bubbles to back floats to swimming across the pool..."></textarea>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Primary Button</label>
+                                    <input type="text" id="heroCtaPrimary" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Book Free Lesson">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Secondary Button</label>
+                                    <input type="text" id="heroCtagecondary" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="See Programs">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <h3 class="text-lg font-medium mb-3">Trust Elements</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Trust Badge Text</label>
+                                <input type="text" id="trustBadgeText" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Trusted by 134+ North Jersey families">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Trust Subtext</label>
+                                <input type="text" id="trustSubtext" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="First lesson free — no card required">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <h3 class="text-lg font-medium mb-3">Reviews Section</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Reviews Title</label>
+                                <input type="text" id="reviewsTitle" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Trusted by 130+ Families in North Jersey">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Reviews Subtitle</label>
+                                <input type="text" id="reviewsSubtitle" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="5.0 ★ Average on Google — Verified Parent Reviews">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Customer Reviews</label>
+                                <div id="reviews" class="space-y-3">
+                                    <!-- Reviews will be added here dynamically -->
+                                </div>
+                                <button type="button" id="addReview" class="mt-2 px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 text-sm">
+                                    Add Review
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generate Code Section -->
+            <div class="mt-8 pt-6 border-t border-gray-200">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">Generated Code</h3>
+                    <button id="generateCode" class="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-medium">
+                        Generate Code
+                    </button>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">site.json content:</label>
+                        <textarea id="siteJsonOutput" rows="10" class="w-full border border-gray-300 rounded-md px-3 py-2 font-mono text-sm bg-gray-50" readonly></textarea>
+                        <button class="mt-2 px-3 py-1 bg-gray-500 text-white rounded text-sm" onclick="copyToClipboard('siteJsonOutput')">Copy site.json</button>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">home.json content:</label>
+                        <textarea id="homeJsonOutput" rows="10" class="w-full border border-gray-300 rounded-md px-3 py-2 font-mono text-sm bg-gray-50" readonly></textarea>
+                        <button class="mt-2 px-3 py-1 bg-gray-500 text-white rounded text-sm" onclick="copyToClipboard('homeJsonOutput')">Copy home.json</button>
+                    </div>
+                </div>
+
+                <div class="mt-4 p-4 bg-blue-50 rounded-md">
+                    <h4 class="font-medium text-blue-900 mb-2">How to Update Your Site:</h4>
+                    <ol class="list-decimal list-inside text-sm text-blue-800 space-y-1">
+                        <li>Copy the generated JSON code above</li>
+                        <li>Paste it into the corresponding files in your <code>content/</code> folder</li>
+                        <li>Commit and push to GitHub</li>
+                        <li>Your site will automatically update!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                
+                // Update tab buttons
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active', 'border-blue-500', 'text-blue-600');
+                    b.classList.add('border-transparent', 'text-gray-500');
+                });
+                btn.classList.add('active', 'border-blue-500', 'text-blue-600');
+                btn.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Update tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`${tabId}-tab`).classList.remove('hidden');
+            });
+        });
+
+        // Navigation items management
+        let navItemCount = 0;
+        document.getElementById('addNavItem').addEventListener('click', () => {
+            const container = document.getElementById('navItems');
+            const div = document.createElement('div');
+            div.className = 'flex gap-2';
+            div.innerHTML = `
+                <input type="text" placeholder="Label" class="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm" data-field="label">
+                <input type="text" placeholder="URL" class="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm" data-field="href">
+                <button type="button" onclick="this.parentElement.remove()" class="px-3 py-2 bg-red-500 text-white rounded-md text-sm">Remove</button>
+            `;
+            container.appendChild(div);
+        });
+
+        // Reviews management
+        let reviewCount = 0;
+        document.getElementById('addReview').addEventListener('click', () => {
+            const container = document.getElementById('reviews');
+            const div = document.createElement('div');
+            div.className = 'border border-gray-200 rounded-md p-3';
+            div.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-medium text-sm">Review ${container.children.length + 1}</span>
+                    <button type="button" onclick="this.closest('.border').remove()" class="text-red-500 text-sm">Remove</button>
+                </div>
+                <div class="space-y-2">
+                    <textarea placeholder="Review quote" rows="2" class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm" data-field="quote"></textarea>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" placeholder="Author name" class="border border-gray-300 rounded-md px-3 py-2 text-sm" data-field="author">
+                        <input type="text" placeholder="Title (e.g., Parent • Verified)" class="border border-gray-300 rounded-md px-3 py-2 text-sm" data-field="title">
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        // Code generation
+        document.getElementById('generateCode').addEventListener('click', () => {
+            // Generate site.json
+            const siteData = {
+                navItems: [],
+                phone: document.getElementById('phone').value || "973-820-1153",
+                address: document.getElementById('address').value || "199 Scoles Ave, Clifton NJ",
+                ctaLabel: document.getElementById('ctaLabel').value || "Book Now"
+            };
+
+            // Collect navigation items
+            document.querySelectorAll('#navItems > div').forEach(div => {
+                const label = div.querySelector('[data-field="label"]').value;
+                const href = div.querySelector('[data-field="href"]').value;
+                if (label && href) {
+                    siteData.navItems.push({ label, href });
+                }
+            });
+
+            // Generate home.json
+            const homeData = {
+                heroTagline: document.getElementById('heroTagline').value || "Where Safety Meets Progress",
+                heroHeadline: document.getElementById('heroHeadline').value || "North Jersey's Specialized Swim Academy for Toddlers & Kids",
+                heroSubhead: document.getElementById('heroSubhead').value || "From bubbles to back floats to swimming across the pool — we teach kids the fundamentals that build capability, confidence, and true water safety.",
+                heroCtaPrimary: document.getElementById('heroCtaPrimary').value || "Book Free Lesson",
+                heroCtagecondary: document.getElementById('heroCtagecondary').value || "See Programs",
+                trustBadgeText: document.getElementById('trustBadgeText').value || "Trusted by 134+ North Jersey families",
+                trustSubtext: document.getElementById('trustSubtext').value || "First lesson free — no card required",
+                reviewsTitle: document.getElementById('reviewsTitle').value || "Trusted by 130+ Families in North Jersey",
+                reviewsSubtitle: document.getElementById('reviewsSubtitle').value || "5.0 ★ Average on Google — Verified Parent Reviews",
+                reviews: []
+            };
+
+            // Collect reviews
+            document.querySelectorAll('#reviews > div').forEach(div => {
+                const quote = div.querySelector('[data-field="quote"]').value;
+                const author = div.querySelector('[data-field="author"]').value;
+                const title = div.querySelector('[data-field="title"]').value;
+                if (quote && author) {
+                    homeData.reviews.push({
+                        quote,
+                        author,
+                        title: title || "Parent • Verified",
+                        rating: 5
+                    });
+                }
+            });
+
+            // Update output textareas
+            document.getElementById('siteJsonOutput').value = JSON.stringify(siteData, null, 2);
+            document.getElementById('homeJsonOutput').value = JSON.stringify(homeData, null, 2);
+        });
+
+        // Copy to clipboard function
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            
+            // Show feedback
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Copied!';
+            button.className = button.className.replace('bg-gray-500', 'bg-green-500');
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.className = button.className.replace('bg-green-500', 'bg-gray-500');
+            }, 2000);
+        }
+
+        // Load existing data on page load
+        window.addEventListener('load', async () => {
+            try {
+                // Try to load existing site.json
+                const siteResponse = await fetch('/content/site.json');
+                if (siteResponse.ok) {
+                    const siteData = await siteResponse.json();
+                    document.getElementById('phone').value = siteData.phone || '';
+                    document.getElementById('address').value = siteData.address || '';
+                    document.getElementById('ctaLabel').value = siteData.ctaLabel || '';
+                    
+                    // Load nav items
+                    if (siteData.navItems) {
+                        siteData.navItems.forEach(item => {
+                            document.getElementById('addNavItem').click();
+                            const lastNavItem = document.querySelector('#navItems > div:last-child');
+                            lastNavItem.querySelector('[data-field="label"]').value = item.label;
+                            lastNavItem.querySelector('[data-field="href"]').value = item.href;
+                        });
+                    }
+                }
+
+                // Try to load existing home.json
+                const homeResponse = await fetch('/content/home.json');
+                if (homeResponse.ok) {
+                    const homeData = await homeResponse.json();
+                    document.getElementById('heroTagline').value = homeData.heroTagline || '';
+                    document.getElementById('heroHeadline').value = homeData.heroHeadline || '';
+                    document.getElementById('heroSubhead').value = homeData.heroSubhead || '';
+                    document.getElementById('heroCtaPrimary').value = homeData.heroCtaPrimary || '';
+                    document.getElementById('heroCtagecondary').value = homeData.heroCtagecondary || '';
+                    document.getElementById('trustBadgeText').value = homeData.trustBadgeText || '';
+                    document.getElementById('trustSubtext').value = homeData.trustSubtext || '';
+                    document.getElementById('reviewsTitle').value = homeData.reviewsTitle || '';
+                    document.getElementById('reviewsSubtitle').value = homeData.reviewsSubtitle || '';
+                    
+                    // Load reviews
+                    if (homeData.reviews) {
+                        homeData.reviews.forEach(review => {
+                            document.getElementById('addReview').click();
+                            const lastReview = document.querySelector('#reviews > div:last-child');
+                            lastReview.querySelector('[data-field="quote"]').value = review.quote;
+                            lastReview.querySelector('[data-field="author"]').value = review.author;
+                            lastReview.querySelector('[data-field="title"]').value = review.title;
+                        });
+                    }
+                }
+            } catch (error) {
+                console.log('Could not load existing content (this is normal for new sites)');
+            }
+        });
+    </script>
+</body>
+</html>

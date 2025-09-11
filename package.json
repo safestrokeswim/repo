@@ -1,9 +1,9 @@
 {
   "name": "safestroke-booking",
   "version": "1.0.0",
-  "description": "SafeStroke booking system with Visual Editor",
+  "description": "SafeStroke booking system with content management",
   "scripts": {
-    "build": "echo 'Build complete'",
+    "build": "echo 'Build complete - static site ready'",
     "dev": "http-server . -p 5173 -c-1",
     "start": "http-server . -p 8080 -c-1"
   },
@@ -14,8 +14,6 @@
     "stripe": "^14.0.0"
   },
   "devDependencies": {
-    "@stackbit/types": "^2.2.0",
-    "@stackbit/cms-git": "^1.0.3",
     "http-server": "^14.1.1"
   },
   "engines": {
