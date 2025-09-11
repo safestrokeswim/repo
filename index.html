@@ -40,14 +40,14 @@
             font-family: 'Outfit', sans-serif; 
             color: #00253D;
         }
-        /* Mobile: Use new cropped hero image */
+        /* Mobile: Use mobile-optimized portrait image with better focal positioning */
         @media (max-width: 768px) {
             .hero-bg {
                 background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
                 background-size: cover;
-                background-position: center 22%; /* Adjusted for child's face positioning */
+                background-position: 50% 30%; /* Bring faces higher in the crop (28-32% range) */
                 background-repeat: no-repeat;
-                padding-bottom: 120px; /* space for sticky CTA and wave */
+                padding-bottom: 140px; /* Extra space for sticky CTA and wave - increased from 120px */
             }
             /* Mobile stronger left→right scrim (+8-12 percentage points) */
             .hero-bg::before {
@@ -80,8 +80,12 @@
                 z-index: 2;
             }
         }
-        /* Very small mobile devices (≤767px) - enhanced scrim */
+        /* Very small mobile devices (≤767px) - enhanced scrim and tighter focal point */
         @media (max-width: 767px) {
+            .hero-bg {
+                background-position: 50% 28%; /* Tighter positioning at very small sizes */
+                padding-bottom: 150px; /* Additional clearance for sticky CTA */
+            }
             .hero-bg::before {
                 background: linear-gradient(90deg, 
                     rgba(11,56,86,0.85) 0%, 
@@ -97,10 +101,16 @@
         }
         /* Add padding bottom on mobile for sticky button */
         @media (max-width: 768px) {
-            body { padding-bottom: 88px; }
+            body { 
+                padding-bottom: 88px;
+                scroll-padding-bottom: 96px; /* Sticky CTA clearance for scroll behavior */
+            }
         }
         @media (max-width: 768px) and (max-height: 700px) {
-            body { padding-bottom: 72px; }
+            body { 
+                padding-bottom: 72px;
+                scroll-padding-bottom: 84px; /* Shorter sticky CTA clearance */
+            }
         }
         .hero-bg { 
             position: relative;
@@ -112,12 +122,12 @@
             width: 100vw;
             margin-left: calc(-50vw + 50%);
         }
-        /* Desktop/Tablet: Use photo background */
+        /* Desktop/Tablet: Use desktop photo with precise focal positioning */
         @media (min-width: 769px) {
             .hero-bg {
                 background-image: url('safestroke-images/davejohnnyfront.jpg');
                 background-size: cover;
-                background-position: center 20%; /* Shifted to position child's face right of text */
+                background-position: 35% 30%; /* Desktop focal point - slightly left, above center */
                 filter: brightness(0.88) contrast(1.04) saturate(0.96);
             }
             /* Desktop left→right readability scrim */
@@ -151,8 +161,11 @@
                 z-index: 2;
             }
         }
-        /* Tablet responsive adjustment (768-1199px) */
+        /* Tablet responsive adjustment (768-1199px) - separate focal point */
         @media (min-width: 768px) and (max-width: 1199px) {
+            .hero-bg {
+                background-position: 40% 35%; /* Tablet-specific focal point */
+            }
             .hero-bg::before {
                 background: linear-gradient(90deg, 
                     rgba(11,56,86,0.78) 0%, 
@@ -164,6 +177,13 @@
                 background: radial-gradient(ellipse 500px 350px at 25% 30%, 
                     rgba(0,0,0,0.26) 0%, 
                     transparent 58%);
+            }
+        }
+
+        /* Large desktop (≥1200px) - maintain precise focal point */
+        @media (min-width: 1200px) {
+            .hero-bg {
+                background-position: 35% 30%; /* Large desktop focal point */
             }
         }
 
@@ -194,13 +214,19 @@
             display: flex;
             align-items: center;
             justify-content: flex-start;
-            padding: clamp(32px, 8vh, 120px) clamp(16px, 4vw, 40px) clamp(32px, 6vh, 80px);
+            padding: clamp(32px, 8vh, 120px) clamp(16px, 4vw, 40px) clamp(120px, 12vh, 140px); /* Increased bottom padding for face clearance */
         }
         @media (max-width: 768px) {
             .hero-container {
                 justify-content: center; /* center on mobile */
                 align-items: center;
-                padding: clamp(40px, 8vh, 80px) 16px clamp(60px, 10vh, 120px);
+                padding: clamp(40px, 8vh, 80px) 16px clamp(140px, 15vh, 160px); /* Extra bottom padding for mobile sticky CTA */
+            }
+        }
+        /* Ensure safe area above CTAs on all breakpoints */
+        @media (min-width: 1200px) {
+            .hero-container {
+                padding-bottom: clamp(120px, 12vh, 160px); /* 120px minimum clearance on large screens */
             }
         }
         .hero-content {
@@ -703,15 +729,19 @@
         .group:hover .program-title-hover {
             color: #2284B8; /* Primary brand blue */
         }
-        /* Enhanced Reviews Section */
+        /* Enhanced Reviews Section - Fixed mobile clipping */
+        .reviews-section {
+            scroll-margin-top: 80px; /* Anchor offset for header height + 16px */
+            overflow: visible; /* Prevent content clipping */
+        }
         .reviews-carousel {
             position: relative;
-            overflow: hidden;
+            overflow: visible; /* Changed from hidden to prevent clipping */
             width: 100%;
         }
         .reviews-viewport {
             overflow-x: auto;
-            overflow-y: hidden;
+            overflow-y: visible; /* Changed from hidden to prevent vertical clipping */
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             scrollbar-width: none; /* Firefox */
@@ -724,6 +754,7 @@
             display: flex;
             gap: 2rem;
             width: fit-content;
+            min-height: auto; /* Dynamic height based on content */
         }
         .review-slide {
             scroll-snap-align: start;
@@ -818,7 +849,8 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 1.5rem;
             padding: 2rem;
-            height: 100%;
+            height: auto; /* Dynamic height instead of 100% */
+            min-height: 300px; /* Minimum height for consistency */
             display: flex;
             flex-direction: column;
         }
@@ -876,13 +908,16 @@
                 height: 84px !important;
             }
             .reviews-section {
-                padding-top: 3rem !important;
+                padding-top: 3rem !important; /* 48px top padding after wave transition */
+                padding-bottom: 4rem !important; /* Extra bottom padding for sticky CTA clearance */
+                scroll-margin-top: 100px; /* Increased mobile anchor offset */
             }
         }
         
         @media (max-width: 768px) and (max-height: 700px) {
             .reviews-section {
-                padding-top: 2.5rem !important;
+                padding-top: 2.25rem !important; /* Slightly reduced for short screens */
+                padding-bottom: 3.5rem !important;
             }
         }
         
@@ -1371,7 +1406,7 @@
             </div>
         </section>
         <!-- Enhanced Reviews Section with proper spacing from wave -->
-        <section class="relative overflow-hidden text-white reviews-section" style="background: linear-gradient(135deg, #1976a3 0%, #2284B8 40%, #5EAEDD 100%); padding-top: 4.5rem; padding-bottom: 6rem;" role="region" aria-label="Parent reviews">
+        <section id="reviews" class="relative overflow-visible text-white reviews-section" style="background: linear-gradient(135deg, #1976a3 0%, #2284B8 40%, #5EAEDD 100%); padding-top: 4.5rem; padding-bottom: 6rem;" role="region" aria-label="Parent reviews">
             <!-- Clean background with subtle texture only -->
             <div class="absolute inset-0 opacity-3">
                 <div class="absolute top-1/3 right-1/4 w-32 h-32 rounded-full" style="background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);"></div>
@@ -1655,7 +1690,7 @@
             });
         });
         
-        // Enhanced Reviews Carousel with Proper Scroll Snapping
+        // Enhanced Reviews Carousel with Dynamic Height and No Clipping
         class ReviewsCarousel {
             constructor() {
                 this.viewport = document.getElementById('reviewsViewport');
@@ -1670,6 +1705,7 @@
                 this.currentIndex = 0;
                 this.isScrolling = false;
                 this.autoPlayInterval = null;
+                this.resizeObserver = null;
                 
                 this.init();
             }
@@ -1677,9 +1713,44 @@
             init() {
                 this.createDots();
                 this.setupEventListeners();
+                this.setupResizeObserver();
                 this.updateLayout();
                 this.updateNavigation();
                 this.startAutoPlay();
+            }
+            
+            setupResizeObserver() {
+                // Use ResizeObserver to dynamically adjust height based on tallest card
+                if ('ResizeObserver' in window) {
+                    this.resizeObserver = new ResizeObserver(entries => {
+                        this.updateDynamicHeight();
+                    });
+                    
+                    // Observe all review cards for height changes
+                    this.slides.forEach(slide => {
+                        const card = slide.querySelector('.review-card');
+                        if (card) {
+                            this.resizeObserver.observe(card);
+                        }
+                    });
+                }
+            }
+            
+            updateDynamicHeight() {
+                // Calculate the height of the tallest card
+                let maxHeight = 0;
+                this.slides.forEach(slide => {
+                    const card = slide.querySelector('.review-card');
+                    if (card) {
+                        const height = card.offsetHeight;
+                        maxHeight = Math.max(maxHeight, height);
+                    }
+                });
+                
+                // Set minimum height on viewport to prevent clipping
+                if (maxHeight > 0) {
+                    this.viewport.style.minHeight = `${maxHeight + 40}px`; // Add 40px buffer
+                }
             }
             
             createDots() {
@@ -1739,8 +1810,8 @@
                     // Mobile: 1 slide per view
                     slideWidth = containerWidth;
                 } else {
-                    // Desktop: 2 slides per view (but could be 1 for simplicity)
-                    slideWidth = containerWidth; // Using 1 slide per view for reliability
+                    // Desktop: 1 slide per view for reliability and no clipping
+                    slideWidth = containerWidth;
                 }
                 
                 // Update slide widths
@@ -1751,6 +1822,9 @@
                 // Update track width
                 const trackWidth = (slideWidth + gap) * this.slides.length - gap;
                 this.track.style.width = `${trackWidth}px`;
+                
+                // Update dynamic height after layout changes
+                this.updateDynamicHeight();
                 
                 // Re-snap to current position
                 this.scrollToSlide(this.currentIndex, false);
@@ -1836,6 +1910,15 @@
                 if (this.autoPlayInterval) {
                     clearInterval(this.autoPlayInterval);
                     this.autoPlayInterval = null;
+                }
+            }
+            
+            destroy() {
+                // Cleanup method for proper memory management
+                this.stopAutoPlay();
+                if (this.resizeObserver) {
+                    this.resizeObserver.disconnect();
+                    this.resizeObserver = null;
                 }
             }
         }
