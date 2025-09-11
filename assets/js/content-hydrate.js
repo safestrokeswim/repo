@@ -40,6 +40,29 @@
     }
   }
 
+  // Apply background positioning if provided
+  function applyBackgroundPosition(data) {
+    if (data.backgroundPositionX && data.backgroundPositionY) {
+      const heroElement = document.querySelector('.hero-bg');
+      if (heroElement) {
+        // Create a style element for dynamic background positioning
+        let styleEl = document.getElementById('dynamic-bg-position');
+        if (!styleEl) {
+          styleEl = document.createElement('style');
+          styleEl.id = 'dynamic-bg-position';
+          document.head.appendChild(styleEl);
+        }
+        
+        const bgPos = `${data.backgroundPositionX}% ${data.backgroundPositionY}%`;
+        styleEl.textContent = `
+          .hero-bg {
+            background-position: ${bgPos} !important;
+          }
+        `;
+      }
+    }
+  }
+
   // Resolve dot path inside object (e.g., "reviews.0.quote")
   function getByPath(obj, path) {
     if (!path || path === '.') return obj;
@@ -91,6 +114,11 @@
     try {
       const data = await loadContent(objectId);
       if (!data) continue;
+      
+      // Apply background positioning for home page data
+      if (objectId === 'content/home.json') {
+        applyBackgroundPosition(data);
+      }
       
       const nodes = section.querySelectorAll('[data-sb-field-path]');
       nodes.forEach((el) => {
