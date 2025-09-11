@@ -750,6 +750,156 @@
                 padding-top: 2.5rem !important;
             }
         }
+        
+        /* Enhanced CTA Section Styling */
+        .cta-section {
+            background: #E9F5FC;
+            position: relative;
+            padding: 6rem 0; /* 96px desktop */
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(34, 132, 184, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 75% 75%, rgba(94, 174, 221, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .cta-section .container {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Benefit Cards */
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 1rem;
+            padding: 1.5rem 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 15px rgba(34, 132, 184, 0.08);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(34, 132, 184, 0.15);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        
+        .benefit-icon {
+            background: linear-gradient(135deg, #5EAEDD 0%, #2284B8 100%) !important;
+            color: white !important;
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-card:hover .benefit-icon {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(34, 132, 184, 0.3);
+        }
+        
+        /* Guarantee Pill */
+        .guarantee-pill {
+            background: linear-gradient(90deg, 
+                rgba(34, 197, 82, 0.08) 0%, 
+                rgba(34, 197, 82, 0.12) 50%, 
+                rgba(34, 197, 82, 0.08) 100%);
+            border: 1px solid rgba(34, 197, 82, 0.2);
+            color: #0B3856;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .guarantee-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 82, 0.15);
+        }
+        
+        /* Primary CTA Button */
+        .primary-cta-button {
+            background: #2284B8;
+            box-shadow: 0 8px 25px rgba(34, 132, 184, 0.3);
+            transition: all 0.3s ease;
+            font-weight: 700;
+        }
+        
+        .primary-cta-button:hover {
+            background: #2D96CC;
+            box-shadow: 0 12px 35px rgba(34, 132, 184, 0.4);
+        }
+        
+        .primary-cta-button:active {
+            background: #1976a3;
+            transform: scale(0.98);
+        }
+        
+        .primary-cta-button:focus {
+            outline: 3px solid rgba(34, 132, 184, 0.4);
+            outline-offset: 2px;
+        }
+        
+        /* CTA Micro Text */
+        .cta-micro-text {
+            color: #6b7280;
+            font-weight: 500;
+            margin-top: 0.5rem;
+        }
+        
+        /* Spacing Adjustments */
+        .cta-section .grid {
+            gap: 2rem; /* 32px desktop */
+            margin-bottom: 2.5rem; /* 40px to guarantee pill */
+        }
+        
+        .guarantee-pill {
+            margin-bottom: 2.5rem; /* 40px to CTA button */
+        }
+        
+        /* Mobile Responsive Behavior */
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 3rem 0; /* 48px mobile */
+            }
+            
+            .cta-section .grid {
+                gap: 1.25rem; /* 20px mobile */
+                margin-bottom: 1.5rem; /* 24px to guarantee pill */
+            }
+            
+            .guarantee-pill {
+                margin-bottom: 1.5rem; /* 24px to CTA button */
+                margin-top: 1.5rem;
+            }
+            
+            .benefit-card {
+                padding: 1.25rem 1rem;
+                margin-bottom: 1rem;
+            }
+            
+            .primary-cta-button {
+                width: calc(100% - 2rem);
+                margin: 0 1rem 0.75rem 1rem;
+                min-height: 44px; /* Proper tap target */
+            }
+            
+            .cta-micro-text {
+                padding-bottom: 1rem; /* Extra space from sticky CTA */
+            }
+        }
+        
+        /* Ensure no collision with sticky mobile CTA */
+        @media (max-width: 768px) {
+            .cta-section {
+                margin-bottom: 2rem;
+            }
+        }
     </style>
 </head>
 <body class="gradient-bg">
@@ -1203,39 +1353,48 @@
             </div>
         </section>
         
-        <!-- CTA Section -->
-        <section class="white-section cta-pattern py-24">
+        <!-- Enhanced CTA Section -->
+        <section class="white-section cta-pattern py-24 cta-section">
             <div class="container mx-auto px-6 text-center">
                  <h2 class="text-4xl font-black">Your Child Deserves to Swim with Confidence</h2>
                  <p class="text-2xl font-bold brand-blue my-2">Join Families Who Trust SafeStroke</p>
-                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Stop wondering if your child will ever feel safe in the water. Our proven method, small classes, and expert instructors deliver the results you've been looking for.</p>
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto">
-                      <div class="text-center">
-                           <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                 <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600 mb-12">Join North Jersey families who choose certified instructors, small classes, and a proven method that gets real results—safely and faster.</p>
+                 
+                 <!-- Benefits Grid -->
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12 max-w-4xl mx-auto mb-10">
+                      <div class="text-center benefit-card">
+                           <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md benefit-icon">
                                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                            </div>
-                           <h3 class="font-bold text-lg">Small Class Sizes</h3>
+                           <h3 class="font-bold text-lg mb-2 text-gray-900">Small Class Sizes</h3>
+                           <p class="text-gray-600 text-sm">Low ratios so every child gets personal attention.</p>
                       </div>
-                      <div class="text-center">
-                           <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                      <div class="text-center benefit-card">
+                           <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md benefit-icon">
                                  <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                            </div>
-                           <h3 class="font-bold text-lg">Proven Method</h3>
+                           <h3 class="font-bold text-lg mb-2 text-gray-900">Proven Method</h3>
+                           <p class="text-gray-600 text-sm">Science-backed lessons designed for progress.</p>
                       </div>
-                      <div class="text-center">
-                           <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md">
+                      <div class="text-center benefit-card">
+                           <div class="bg-gradient-to-br from-blue-100 to-blue-200 text-blue-600 rounded-2xl h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-md benefit-icon">
                                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                            </div>
-                           <h3 class="font-bold text-lg">Serving North Jersey</h3>
+                           <h3 class="font-bold text-lg mb-2 text-gray-900">Serving North Jersey</h3>
+                           <p class="text-gray-600 text-sm">Convenient location and flexible scheduling.</p>
                       </div>
                  </div>
-                 <!-- Guarantee Badge -->
-                 <div class="inline-flex items-center gap-3 bg-gradient-to-r from-green-100 to-blue-100 text-green-800 px-6 py-3 rounded-full mb-8 mt-8 shadow-md pulse-subtle">
-                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                     <span class="font-bold">100% Satisfaction Guarantee • Risk-Free Trial Lesson</span>
+                 
+                 <!-- Guarantee Pill -->
+                 <div class="inline-flex items-center gap-3 guarantee-pill px-6 py-3 rounded-full mb-8 mt-8 shadow-md">
+                     <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                     <span class="font-bold text-gray-900">100% Satisfaction Guarantee • First Lesson Risk-Free</span>
                  </div>
+                 
+                 <!-- Primary CTA -->
                  <div class="block">
-                     <a href="safestroke-booking.html" class="inline-block brand-blue-bg hover:bg-blue-600 text-white font-bold py-4 px-12 rounded-full text-xl transition duration-300 transform hover:scale-105">Start with a FREE Trial →</a>
+                     <a href="safestroke-booking.html" class="inline-block primary-cta-button text-white font-bold py-4 px-12 rounded-full text-xl transition duration-300 transform hover:scale-105 mb-3" aria-label="Start free trial at SafeStroke">Start with a FREE Trial →</a>
+                     <div class="text-sm text-gray-500 cta-micro-text">No card required • No commitments</div>
                  </div>
             </div>
         </section>
