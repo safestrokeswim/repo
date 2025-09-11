@@ -45,11 +45,11 @@
             .hero-bg {
                 background-image: url('safestroke-images/johnnydaveback - mobile.jpg');
                 background-size: cover;
-                background-position: center 25%; /* Adjusted to better center on child's face */
+                background-position: center 22%; /* Adjusted for child's face positioning */
                 background-repeat: no-repeat;
                 padding-bottom: 120px; /* space for sticky CTA and wave */
             }
-            /* Mobile gradient overlay for text readability */
+            /* Mobile stronger left→right scrim (+8-12 percentage points) */
             .hero-bg::before {
                 content: '';
                 position: absolute;
@@ -57,9 +57,42 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: linear-gradient(180deg, rgba(11,56,86,0.3) 0%, rgba(11,56,86,0.1) 100%);
+                background: linear-gradient(90deg, 
+                    rgba(11,56,86,0.82) 0%, 
+                    rgba(11,56,86,0.60) 35%, 
+                    rgba(11,56,86,0.30) 60%, 
+                    rgba(11,56,86,0) 85%);
                 pointer-events: none;
                 z-index: 1;
+            }
+            /* Mobile radial vignette under text cluster */
+            .hero-bg::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(ellipse 70% 50% at 25% 30%, 
+                    rgba(0,0,0,0.28) 0%, 
+                    transparent 60%);
+                pointer-events: none;
+                z-index: 2;
+            }
+        }
+        /* Very small mobile devices (≤767px) - enhanced scrim */
+        @media (max-width: 767px) {
+            .hero-bg::before {
+                background: linear-gradient(90deg, 
+                    rgba(11,56,86,0.85) 0%, 
+                    rgba(11,56,86,0.62) 35%, 
+                    rgba(11,56,86,0.32) 60%, 
+                    rgba(11,56,86,0) 85%);
+            }
+            .hero-bg::after {
+                background: radial-gradient(ellipse 65% 45% at 25% 30%, 
+                    rgba(0,0,0,0.32) 0%, 
+                    transparent 58%);
             }
         }
         /* Add padding bottom on mobile for sticky button */
@@ -84,20 +117,53 @@
             .hero-bg {
                 background-image: url('safestroke-images/davejohnnyfront.jpg');
                 background-size: cover;
-                background-position: center left;
-                filter: brightness(0.86) contrast(1.06) saturate(0.95);
+                background-position: center 20%; /* Shifted to position child's face right of text */
+                filter: brightness(0.88) contrast(1.04) saturate(0.96);
             }
-            /* Desktop gradient overlay for text readability */
+            /* Desktop left→right readability scrim */
             .hero-bg::before {
                 content: '';
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 60%;
-                height: 100%;
-                background: linear-gradient(90deg, rgba(11,56,86,0.4) 0%, rgba(11,56,86,0.2) 70%, transparent 100%);
+                right: 0;
+                bottom: 0;
+                background: linear-gradient(90deg, 
+                    rgba(11,56,86,0.73) 0%, 
+                    rgba(11,56,86,0.50) 35%, 
+                    rgba(11,56,86,0.20) 60%, 
+                    rgba(11,56,86,0) 85%);
                 pointer-events: none;
                 z-index: 1;
+            }
+            /* Radial vignette under text cluster */
+            .hero-bg::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(ellipse 600px 400px at 25% 30%, 
+                    rgba(0,0,0,0.24) 0%, 
+                    transparent 60%);
+                pointer-events: none;
+                z-index: 2;
+            }
+        }
+        /* Tablet responsive adjustment (768-1199px) */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .hero-bg::before {
+                background: linear-gradient(90deg, 
+                    rgba(11,56,86,0.78) 0%, 
+                    rgba(11,56,86,0.55) 35%, 
+                    rgba(11,56,86,0.25) 60%, 
+                    rgba(11,56,86,0) 85%);
+            }
+            .hero-bg::after {
+                background: radial-gradient(ellipse 500px 350px at 25% 30%, 
+                    rgba(0,0,0,0.26) 0%, 
+                    transparent 58%);
             }
         }
 
@@ -138,21 +204,24 @@
             }
         }
         .hero-content {
-            max-width: min(92vw, 700px);
+            max-width: min(90vw, 680px); /* 640-720px range with mobile fallback */
             position: relative;
-            z-index: 2;
+            z-index: 10; /* Above both overlay layers */
+            padding-left: 24px; /* Safe area from image edges */
         }
         @media (min-width: 769px) {
             .hero-content {
-                max-width: min(65vw, 700px);
+                max-width: min(65vw, 720px); /* Expanded to full 640-720px range */
                 text-align: left;
+                padding-left: 32px; /* 24-32px padding requirement */
             }
         }
         @media (max-width: 768px) {
             .hero-content {
-                max-width: 90%;
+                max-width: 90vw;
                 text-align: center;
                 margin: 0 auto;
+                padding-left: 0;
             }
         }
         /* Hero Tagline */
@@ -174,12 +243,12 @@
         }
         .hero-title {
             font-family: 'Outfit', sans-serif;
-            font-weight: 700; /* Bold */
-            font-size: clamp(32px, 4.5vw, 56px); /* Larger and more balanced */
-            line-height: 1.1;
-            color: #FFFFFF;
+            font-weight: 700;
+            font-size: clamp(32px, 4.5vw, 56px);
+            line-height: 1.15; /* 1.12-1.18 range */
+            color: #FFFFFF; /* Pure white */
             margin-bottom: 24px;
-            text-shadow: 0 3px 15px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.35); /* Separation shadow */
             position: relative;
             z-index: 1;
             animation: fadeInUp 0.8s ease-out 0.4s both;
@@ -187,26 +256,30 @@
         @media (max-width: 768px) {
             .hero-title {
                 font-size: clamp(28px, 7.5vw, 36px);
-                line-height: 1.05;
+                line-height: 1.12; /* Tighter on mobile - keep to 2-3 lines max */
                 text-align: center;
-                text-shadow: 0 3px 15px rgba(0,0,0,0.6);
+            }
+        }
+        @media (max-width: 767px) {
+            .hero-title {
+                line-height: 1.15; /* Slightly more breathing room on very small screens */
             }
         }
         .hero-title .accent {
-            color: #2284B8; /* Brand blue accent on desktop */
+            color: #5EAEDD; /* Light brand blue for better contrast */
+            text-shadow: 0 2px 12px rgba(0,0,0,0.35); /* Same shadow as H1 */
         }
         @media (max-width: 768px) {
             .hero-title .accent {
-                color: #FFFFFF; /* White on mobile for maximum contrast */
-                text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+                color: #5EAEDD; /* Consistent on mobile */
             }
         }
         .hero-subtitle {
             font-family: 'Outfit', sans-serif;
             font-weight: 400;
-            font-size: clamp(18px, 2.2vw, 20px); /* Increased to 18-20px */
-            line-height: 1.5; /* Better line height */
-            color: rgba(255, 255, 255, 0.95);
+            font-size: clamp(18px, 2.2vw, 20px); /* 18-20px desktop */
+            line-height: 1.5; /* 1.45-1.55 range */
+            color: rgba(255, 255, 255, 0.92); /* 90-94% white */
             margin-bottom: 32px;
             position: relative;
             z-index: 1;
@@ -218,10 +291,17 @@
         }
         @media (max-width: 768px) {
             .hero-subtitle {
-                font-size: 18px;
-                line-height: 1.4;
+                font-size: clamp(16px, 4.5vw, 18px); /* 16-18px mobile */
+                line-height: 1.45;
                 text-align: center;
                 margin-bottom: 28px;
+            }
+        }
+        /* Very small device step-down for subtitle before touching H1 */
+        @media (max-width: 480px) {
+            .hero-subtitle {
+                font-size: clamp(15px, 4vw, 17px); /* One step smaller on very small devices */
+                line-height: 1.5; /* More readable line height */
             }
         }
         .hero-buttons {
@@ -253,7 +333,7 @@
             justify-content: center;
             min-height: 56px;
             transition: all 0.3s ease;
-            border: none;
+            border: 1px solid rgba(255,255,255,0.1); /* Subtle inner white keyline */
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             position: relative;
             z-index: 1;
@@ -269,9 +349,9 @@
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 3px solid rgba(255, 255, 255, 0.95); /* Brighter white, thicker border */
+            border: 2px solid rgba(255, 255, 255, 0.92); /* Bright white border */
             border-radius: 12px;
-            padding: clamp(11px, 2vw, 12px) clamp(26px, 4vw, 30px); /* Adjusted for thicker border */
+            padding: clamp(13px, 2vw, 14px) clamp(28px, 4vw, 32px); /* Adjusted for border */
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 18px;
@@ -302,7 +382,7 @@
             }
         }
         .trust-badge {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(11,56,86,0.31); /* Semi-transparent navy background */
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             padding: 12px 20px;
@@ -313,7 +393,7 @@
             z-index: 1;
             white-space: nowrap;
             animation: fadeInUp 0.8s ease-out 1.2s both; /* Fade in last */
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px); /* Increased blur for better clarity */
         }
         .trust-badge .stars {
             color: #FFD166; /* Gold stars */
