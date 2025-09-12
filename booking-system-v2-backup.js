@@ -50,7 +50,7 @@ let selectedTimeSlot = null;
 let stripe = null;
 let elements = null;
 let paymentElement = null;
-let currentCalendarMonth = new Date();
+let currentCalendarMonth = new Date(2025, 9, 1); // Default to October 2025
 let appliedPromoCode = null;
 let bookingMode = null; // 'package' or 'single'
 let singleLessonProgram = null;
@@ -64,8 +64,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeBookingFlow();
     initializeStripe();
     
-    // Set current month to October 2025 for demo (adjust as needed)
-    currentCalendarMonth = new Date('2025-10-01');
+    // Set default month to October 2025 (when classes start)
+    currentCalendarMonth = new Date(2025, 9, 1); // Month is 0-indexed, so 9 = October
 });
 
 // --- Initialization Functions ---
@@ -198,7 +198,7 @@ async function handleScheduleWithCode() {
 
 // --- UI Rendering Functions ---
 function showStep(stepNumber) {
-    // Hide all steps
+    // Hide all steps including email step
     ['step-1', 'step-2', 'email-step', 'payment-section', 'success-section'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
@@ -207,7 +207,7 @@ function showStep(stepNumber) {
     // Show requested step
     const stepId = stepNumber === 1 ? 'step-1' : 
                    stepNumber === 2 ? 'step-2' : 
-                   stepNumber === 2.5 ? 'email-step' : // New email step
+                   stepNumber === 2.5 ? 'email-step' : // Email collection step
                    stepNumber === 3 ? 'payment-section' : 
                    'success-section';
     
@@ -242,7 +242,7 @@ function renderPackages() {
     // Build all three cards as a single HTML string
     let html = '';
     
-    [4, 6, 8].forEach(lessons => {
+    [4, 6, 8].forEach((lessons, index) => {
         const price = pricing[lessons];
         const perLesson = Math.floor(price / lessons);
         
@@ -256,7 +256,7 @@ function renderPackages() {
         }
         
         html += `
-            <div class="bg-white rounded-lg shadow-lg border-2 border-gray-200 hover:border-blue-500 transition p-4">
+            <div class="bg-white rounded-lg shadow-lg border-2 border-gray-200 hover:border-blue-500 transition p-4 animate-fade-in" style="animation-delay: ${index * 0.1}s">
                 <h4 class="text-xl font-bold mb-2">${lessons} Lessons</h4>
                 ${badgeHTML}
                 <div class="text-3xl font-bold mt-3 mb-1">$${price}</div>
@@ -298,10 +298,11 @@ function showEmailCollectionStep() {
         emailStep.id = 'email-step';
         emailStep.className = 'hidden';
         
-        // Insert it after step-2
+        // Insert it in the package-flow div after step-2
+        const packageFlow = document.getElementById('package-flow');
         const step2 = document.getElementById('step-2');
-        if (step2 && step2.parentElement) {
-            step2.parentElement.insertBefore(emailStep, step2.nextSibling);
+        if (packageFlow && step2) {
+            packageFlow.insertBefore(emailStep, step2.nextSibling);
         }
     }
     
@@ -540,20 +541,22 @@ async function handlePaymentSubmit(event) {
         
         // Update success message to mention email
         const successSection = document.getElementById('success-section');
-        if (successSection) {
-            const existingContent = successSection.innerHTML;
-            // Add email notification
-            const emailNotice = `
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4 max-w-md mx-auto">
+        if (successSection && customerEmail) {
+            // Add email notification below the package code display
+            const codeDisplay = document.getElementById('package-code-display').parentElement;
+            if (codeDisplay && !document.getElementById('email-notice')) {
+                const emailNotice = document.createElement('div');
+                emailNotice.id = 'email-notice';
+                emailNotice.className = 'bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4';
+                emailNotice.innerHTML = `
                     <p class="text-blue-800 text-sm">
                         <strong>📧 Check your email!</strong><br>
                         We've sent your package code to <strong>${customerEmail}</strong><br>
                         <span class="text-xs">Be sure to check your spam folder if you don't see it.</span>
                     </p>
-                </div>
-            `;
-            // Insert after the package code display
-            successSection.innerHTML = existingContent.replace('</div>', '</div>' + emailNotice);
+                `;
+                codeDisplay.parentElement.insertBefore(emailNotice, codeDisplay.nextSibling);
+            }
         }
         
     } catch (error) {
@@ -788,6 +791,33 @@ window.showDateSlots = async function(dateStr) {
     const container = document.getElementById('selected-date-slots');
     const date = new Date(dateStr + 'T00:00:00');
     
+    // Remove previous selection highlight
+    document.querySelectorAll('.calendar-day-selected').forEach(el => {
+        el.classList.remove('calendar-day-selected');
+    });
+    
+    // Add selection highlight to clicked date
+    if (event && event.currentTarget) {
+        event.currentTarget.classList.add('calendar-day-selected');
+    }
+    
+    // Show loading spinner
+    container.innerHTML = `
+        <div class="bg-white rounded-lg shadow-lg p-6 text-center">
+            <div class="loading-spinner"></div>
+            <p class="text-gray-600 mt-4">Loading available times...</p>
+        </div>
+    `;
+    
+    // Smooth scroll to loading indicator
+    setTimeout(() => {
+        container.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest' 
+        });
+    }, 100);
+    
     try {
         const response = await fetch(`/.netlify/functions/get-time-slots?program=${selectedProgram}&date=${dateStr}`);
         const slots = await response.json();
@@ -796,28 +826,83 @@ window.showDateSlots = async function(dateStr) {
         
         container.innerHTML = `
             <div class="bg-white rounded-lg shadow-lg p-6">
-                <h4 class="text-lg font-bold mb-4">
-                    Available times for ${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-                </h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    ${availableSlots.map(slot => `
-                        <button onclick="selectTimeSlot('${slot.id}', '${slot.date}', '${slot.start_time}')" 
-                                class="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left">
-                            <div class="font-semibold">
-                                ${formatTime(slot.start_time)} - ${formatTime(slot.end_time)}
-                            </div>
-                            <div class="text-sm text-gray-600 mt-1">
-                                Group ${slot.group_number} • ${slot.max_capacity - slot.current_enrollment} spots left
-                            </div>
-                        </button>
-                    `).join('')}
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-lg font-bold">
+                        Available times for ${date.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
+                    </h4>
+                    <button onclick="clearDateSelection()" 
+                            class="text-sm bg-gray-100 hover:bg-gray-200 px-3 py-1 rounded-full transition">
+                        ← Back to calendar
+                    </button>
                 </div>
+                
+                ${availableSlots.length > 0 ? `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${availableSlots.map(slot => `
+                            <button onclick="selectTimeSlot('${slot.id}', '${slot.date}', '${slot.start_time}')" 
+                                    class="p-4 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition text-left">
+                                <div class="font-semibold">
+                                    ${formatTime(slot.start_time)} - ${formatTime(slot.end_time)}
+                                </div>
+                                <div class="text-sm text-gray-600 mt-1">
+                                    Group ${slot.group_number} • ${slot.max_capacity - slot.current_enrollment} spots left
+                                </div>
+                            </button>
+                        `).join('')}
+                    </div>
+                ` : `
+                    <div class="text-center py-8">
+                        <p class="text-gray-500">No available time slots for this date.</p>
+                        <p class="text-sm text-gray-400 mt-2">Please select another date.</p>
+                    </div>
+                `}
             </div>
         `;
         
+        // Smooth scroll to the loaded time slots
+        setTimeout(() => {
+            container.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start',
+                inline: 'nearest' 
+            });
+        }, 100);
+        
     } catch (error) {
         console.error('Failed to load slots for date:', error);
-        container.innerHTML = '<div class="text-red-600 text-center p-4">Failed to load time slots</div>';
+        container.innerHTML = `
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="text-red-600 text-center p-4">
+                    <p class="font-semibold">Failed to load time slots</p>
+                    <p class="text-sm mt-2">Please try again or select another date.</p>
+                    <button onclick="clearDateSelection()" 
+                            class="mt-4 bg-red-100 hover:bg-red-200 text-red-800 px-4 py-2 rounded-full text-sm transition">
+                        Back to calendar
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+};
+
+// Helper function to clear date selection
+window.clearDateSelection = function() {
+    // Remove selection highlight
+    document.querySelectorAll('.calendar-day-selected').forEach(el => {
+        el.classList.remove('calendar-day-selected');
+    });
+    
+    // Clear the time slots display
+    const container = document.getElementById('selected-date-slots');
+    container.innerHTML = '';
+    
+    // Scroll back to calendar
+    const calendarContainer = document.getElementById('calendar-container');
+    if (calendarContainer) {
+        calendarContainer.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start'
+        });
     }
 };
 
