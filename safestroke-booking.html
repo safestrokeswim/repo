@@ -510,70 +510,172 @@
     
     <script src="booking-system-v2.js"></script>
     <script>
-        // Meta Pixel Enhanced Event Tracking
+        // Fixed Meta Pixel Event Tracking
         document.addEventListener('DOMContentLoaded', function() {
-            // Track when someone starts the booking process
+            
+            // Content ID and pricing mappings
+            const CONTENT_IDS = {
+                'Droplet': {
+                    single: 'droplet-single-lesson',
+                    package_4: 'droplet-4-lessons',
+                    package_6: 'droplet-6-lessons', 
+                    package_8: 'droplet-8-lessons'
+                },
+                'Splashlet': {
+                    single: 'splashlet-single-lesson',
+                    package_4: 'splashlet-4-lessons',
+                    package_6: 'splashlet-6-lessons',
+                    package_8: 'splashlet-8-lessons'
+                },
+                'Strokelet': {
+                    single: 'strokelet-single-lesson', 
+                    package_4: 'strokelet-4-lessons',
+                    package_6: 'strokelet-6-lessons',
+                    package_8: 'strokelet-8-lessons'
+                }
+            };
+            
+            const PRICING = {
+                'Droplet': { single: 30, package_4: 112, package_6: 162, package_8: 200 },
+                'Splashlet': { single: 40, package_4: 152, package_6: 222, package_8: 280 },
+                'Strokelet': { single: 45, package_4: 172, package_6: 252, package_8: 320 }
+            };
+            
+            // ✅ FIXED: Track when someone starts the booking process with proper value/currency
             document.querySelectorAll('[onclick*="startPackageFlow"], [onclick*="startSingleLessonFlow"]').forEach(button => {
                 button.addEventListener('click', function() {
                     if (typeof fbq !== 'undefined') {
+                        const isPackageFlow = this.getAttribute('onclick').includes('startPackageFlow');
+                        const estimatedValue = isPackageFlow ? 180 : 40; // Average values
+                        
                         fbq('track', 'InitiateCheckout', {
+                            content_ids: ['swimming-lessons'], // ✅ FIXED: Added content_ids
                             content_name: 'Swimming Lessons',
-                            content_category: 'Swim Classes'
+                            content_category: 'Swim Classes',
+                            content_type: 'product',
+                            value: estimatedValue, // ✅ FIXED: Added value as number
+                            currency: 'USD' // ✅ FIXED: Added currency
                         });
                     }
                 });
             });
             
-            // Track program selection
+            // ✅ FIXED: Track program selection with content_ids
             document.querySelectorAll('[data-program-name]').forEach(card => {
                 card.addEventListener('click', function() {
                     const programName = this.getAttribute('data-program-name');
-                    if (typeof fbq !== 'undefined') {
+                    if (typeof fbq !== 'undefined' && programName) {
+                        const contentId = CONTENT_IDS[programName] ? CONTENT_IDS[programName].package_6 : programName.toLowerCase() + '-program';
+                        const estimatedPrice = PRICING[programName] ? PRICING[programName].package_6 : 200;
+                        
                         fbq('track', 'AddToCart', {
-                            content_name: programName,
+                            content_ids: [contentId], // ✅ FIXED: Added required content_ids
+                            content_name: programName + ' Swimming Program',
                             content_category: 'Swim Programs',
-                            content_type: 'product'
+                            content_type: 'product',
+                            value: estimatedPrice, // ✅ FIXED: Added value
+                            currency: 'USD' // ✅ FIXED: Added currency
                         });
                     }
                 });
             });
             
-            // Track successful payment - this should be called after Stripe payment succeeds
-            // You'll need to call this function from your booking-system-v2.js when payment is confirmed
-            window.trackPurchase = function(programName, packageType, amount) {
+            // ✅ FIXED: Enhanced purchase tracking function
+            window.trackPurchase = function(programName, packageInfo, amount) {
                 if (typeof fbq !== 'undefined') {
+                    let contentId = 'swimming-lesson';
+                    let packageType = 'single';
+                    
+                    // Determine package type and content ID
+                    if (packageInfo && packageInfo.lessons) {
+                        if (packageInfo.lessons === 4) packageType = 'package_4';
+                        else if (packageInfo.lessons === 6) packageType = 'package_6';
+                        else if (packageInfo.lessons === 8) packageType = 'package_8';
+                        else packageType = 'single';
+                        
+                        if (CONTENT_IDS[programName] && CONTENT_IDS[programName][packageType]) {
+                            contentId = CONTENT_IDS[programName][packageType];
+                        }
+                    }
+                    
+                    // Track Purchase event
                     fbq('track', 'Purchase', {
-                        value: amount,
-                        currency: 'USD',
-                        content_name: programName + ' - ' + packageType,
+                        content_ids: [contentId], // ✅ FIXED: Proper content_ids
+                        value: parseFloat(amount), // ✅ FIXED: Ensure it's a number
+                        currency: 'USD', // ✅ FIXED: Required currency parameter
+                        content_name: programName + (packageInfo ? ` - ${packageInfo.lessons} lessons` : ' - Single Lesson'),
                         content_category: 'Swimming Lessons',
                         content_type: 'product',
-                        content_ids: [programName.toLowerCase() + '_' + packageType]
+                        num_items: packageInfo ? packageInfo.lessons : 1
                     });
                     
-                    // Also track as CompleteRegistration for better funnel tracking
+                    // Also track as CompleteRegistration
                     fbq('track', 'CompleteRegistration', {
+                        content_ids: [contentId],
+                        value: parseFloat(amount),
+                        currency: 'USD',
+                        content_name: programName + ' Registration'
+                    });
+                    
+                    console.log('✅ Meta Pixel Purchase tracked:', {
+                        content_id: contentId,
                         value: amount,
                         currency: 'USD',
-                        content_name: programName + ' - ' + packageType
+                        program: programName
                     });
                 }
             };
             
-            // Track when someone applies a promo code
-            const promoButton = document.querySelector('[onclick*="applySingleLessonPromo"]');
-            if (promoButton) {
-                promoButton.addEventListener('click', function() {
-                    const promoCode = document.getElementById('single-promo-input').value;
-                    if (promoCode && typeof fbq !== 'undefined') {
-                        fbq('track', 'Lead', {
-                            content_name: 'Promo Code Applied',
-                            content_category: 'Discounts',
-                            value: promoCode
-                        });
+            // ✅ FIXED: Track package selection with specific pricing
+            window.trackPackageSelection = function(program, lessons, price) {
+                if (typeof fbq !== 'undefined') {
+                    let packageType = 'package_' + lessons;
+                    let contentId = 'swimming-package';
+                    
+                    if (CONTENT_IDS[program] && CONTENT_IDS[program][packageType]) {
+                        contentId = CONTENT_IDS[program][packageType];
                     }
-                });
-            }
+                    
+                    fbq('track', 'AddToCart', {
+                        content_ids: [contentId], // ✅ FIXED: Specific content ID
+                        content_name: `${program} ${lessons}-Lesson Package`,
+                        content_category: 'Swimming Packages',
+                        content_type: 'product',
+                        value: parseFloat(price), // ✅ FIXED: Actual price as number
+                        currency: 'USD', // ✅ FIXED: Currency parameter
+                        num_items: lessons
+                    });
+                }
+            };
+            
+            // Track single lesson selection
+            window.trackSingleLessonSelection = function(program, price) {
+                if (typeof fbq !== 'undefined') {
+                    const contentId = CONTENT_IDS[program] ? CONTENT_IDS[program].single : program.toLowerCase() + '-single';
+                    
+                    fbq('track', 'AddToCart', {
+                        content_ids: [contentId], // ✅ FIXED: Specific content ID
+                        content_name: `${program} Single Lesson`,
+                        content_category: 'Single Lessons',
+                        content_type: 'product',
+                        value: parseFloat(price), // ✅ FIXED: Actual price
+                        currency: 'USD', // ✅ FIXED: Currency
+                        num_items: 1
+                    });
+                }
+            };
+            
+            // Track promo code applications
+            window.trackPromoCode = function(promoCode, program) {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'Lead', {
+                        content_name: 'Promo Code Applied: ' + promoCode,
+                        content_category: 'Discounts',
+                        custom_program: program || 'Unknown'
+                    });
+                }
+            };
+            
         });
     </script>
 </body>
